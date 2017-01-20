@@ -20,14 +20,14 @@
 - name: download hadoop
   get_url:
     url: '{{ hadoop_mirrors|random }}/hadoop-{{ hadoop_version }}.tar.gz'
-    dest: '/opt/hadoop-{{ hadoop_version }}.tar.gz'
+    dest: '{{ hadoop_home }}-{{ hadoop_version }}.tar.gz'
     force: no
   register: result
   until: result|success
   retries: 5
   delay: 2
   sudo: yes
-  sudo_user: '{{ hadoop_user }}'
+
 
 - name: extract hadoop tarball
   command: '/usr/bin/env tar xf hadoop-{{ hadoop_version }}.tar.gz'
@@ -35,12 +35,21 @@
     chdir: '{{ hadoop_home }}'
     creates: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
   sudo: yes
-  sudo_user: '{{ hadoop_user }}'
+
+- name: chown to hadoop user
+  file:
+    dest: '{{ hadoop_home }}-{{ hadoop_version }}'
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+    recurse: yes
 
 - name: create link to hadoop
   file:
     src: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
     dest: '{{ hadoop_home }}'
     state: link
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+
 
 
