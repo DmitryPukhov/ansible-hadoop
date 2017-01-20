@@ -32,9 +32,10 @@
 - name: extract hadoop tarball
   command: '/usr/bin/env tar xf hadoop-{{ hadoop_version }}.tar.gz'
   args:
-    chdir: '{{ hadoop_home }}'
+    chdir: '{{ hadoop_home }}/..'
     creates: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
   sudo: yes
+
 
 - name: chown to hadoop user
   file:
@@ -45,7 +46,7 @@
 
 - name: create link to hadoop
   file:
-    src: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
+    src: '{{ hadoop_home }}-{{ hadoop_version }}'
     dest: '{{ hadoop_home }}'
     state: link
     owner: '{{ hadoop_user }}'
