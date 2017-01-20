@@ -1,0 +1,46 @@
+---
+# Create hadoop user
+- name: add hadoop group
+  group: name={{ hadoop_group }}
+
+- name: add hadoop user
+  user: name={{ hadoop_user}} group={{ hadoop_group }} home={{ hadoop_user_home }} shell=/bin/bash
+
+# Debian related OSs
+- name: Apt install {{ item }}
+  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  with_items:
+  - wget
+  - tar
+  - gzip
+  - unzip
+- name: install java
+  apt: name={{ java_package }} state=present
+
+- name: download hadoop
+  get_url:
+    url: '{{ hadoop_mirrors|random }}/hadoop-{{ hadoop_version }}.tar.gz'
+    dest: '/opt/hadoop-{{ hadoop_version }}.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+  sudo_user: '{{ hadoop_user }}'
+
+- name: extract hadoop tarball
+  command: '/usr/bin/env tar xf hadoop-{{ hadoop_version }}.tar.gz'
+  args:
+    chdir: '{{ hadoop_home }}'
+    creates: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
+  sudo: yes
+  sudo_user: '{{ hadoop_user }}'
+
+- name: create link to hadoop
+  file:
+    src: '{{ hadoop_home }}/hadoop-{{ hadoop_version }}'
+    dest: '{{ hadoop_home }}'
+    state: link
+
+

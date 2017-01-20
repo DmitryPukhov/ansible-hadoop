@@ -1,0 +1,9 @@
+---
+# Deploy & configure hadoop on cluster
+- name: Hadoop cluster provisioning
+  hosts: nodes
+  user: user1
+  sudo: yes
+  roles:
+    - hadoop
+
