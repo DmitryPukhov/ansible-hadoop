@@ -6,4 +6,22 @@
   sudo: yes
   roles:
     - hadoop
+# Open postgresql port
+#- name: Open postgresql port
+#  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
+#  ignore_errors: yes
+#  with_items:
+#   - 5432
+
+#- name: Install postgresql metastore
+#  roles: ANXS.postgresql
+
+#- name: Hive metastore
+ # hosts: hadoop_all
+#  user: user1
+#  sudo: yes
+#  roles: ANXS.postgresql
+
+
+
 
