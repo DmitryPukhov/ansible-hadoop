@@ -1,4 +1,6 @@
 [hadoop_all]
 # Hadoop cluster nodes
 n5001-hdp001 hadoop_type_of_node=hadoop_master
+[hadoop_master]
+n5001-hdp001
 #n5001-hdp002
