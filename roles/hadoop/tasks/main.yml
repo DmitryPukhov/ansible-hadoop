@@ -14,6 +14,9 @@
 - name: Configuration changes
   include: configure.yml
 
+- name: Autostart set up
+  include: autostart.yml
+
 - name: Start hdfs and yarn
   include: restart-services.yml
 
