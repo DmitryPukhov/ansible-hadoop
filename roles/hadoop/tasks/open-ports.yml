@@ -13,6 +13,8 @@
   - 8020
   - 8031
   - 8032
+  - 15001
+  - 9001
 
 - name: Open all ports from ip {{ item.1 }} in the firewall
   iptables: chain=INPUT jump=ACCEPT protocol=tcp source {{ item.1 }}

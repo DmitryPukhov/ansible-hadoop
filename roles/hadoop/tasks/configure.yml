@@ -44,31 +44,29 @@
     regexp: '# HADOOP-BIN-PATH'
 
 - name: Ensure hadoop/conf directory exists
-  file: path={{hadoop_home}}/conf state=directory
-
-- name: chown to hadoop user
   file:
-    dest: '{{ hadoop_home }}/conf'
+    path: '{{hadoop_home}}/conf'
+    state: directory
     owner: '{{ hadoop_user }}'
-    group: '{{ hadoop_group }}'
-    recurse: yes
+    group: '{{hadoop_group}}'
+
 
 - name: Copy hadoop config files
   template:
-    src: hadoop/conf/{{item}}
+    src: 'templates/hadoop/conf/{{ item }}'
     dest: '{{ hadoop_home }}/conf/{{ item }}'
     force: yes
     owner: '{{ hadoop_user }}'
     group: '{{ hadoop_group }}'
-    with_items:
-      - hadoop-env.sh
-      - yarn-env.sh
-      - core-site.xml
-      - hdfs-site.xml
-      - yarn-site.xml
-      - core-site.xml
-      - capacity-scheduler.xml
-      - slaves
+  with_items:
+    - hadoop-env.sh
+    - 'yarn-env.sh'
+    - 'core-site.xml'
+    - 'hdfs-site.xml'
+    - 'yarn-site.xml'
+    - 'core-site.xml'
+    - 'capacity-scheduler.xml'
+    - 'slaves'
 
 - name: delete old hdfs data
   file:

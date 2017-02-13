@@ -25,16 +25,16 @@
   become_user: '{{hadoop_user}}'
   #when: ( hadoop_type_of_node == 'slave' ) or ( hadoop_type_of_node == 'nodemanager' )
 
-#- name: refreshDFSNodes
-#  command: "{{ hadoop_home }}/bin/hdfs dfsadmin -refreshNodes"
-#  become: yes
-#  become_user: '{{hadoop_user}}'
+- name: refreshDFSNodes
+  command: "{{ hadoop_home }}/bin/hdfs dfsadmin -refreshNodes"
+  become: yes
+  become_user: '{{hadoop_user}}'
   #when: ( hadoop_type_of_node == 'master' ) or ( hadoop_type_of_node == 'namenode' )
-#  ignore_errors: yes
+  ignore_errors: yes
 
-#- name: refreshYarnNodes
-#  command: "{{ hadoop_home }}/bin/yarn rmadmin -refreshNodes"
-#  become: yes
-#  become_user: '{{hadoop_user}}'
+- name: refreshYarnNodes
+  command: "{{ hadoop_home }}/bin/yarn rmadmin -refreshNodes"
+  become: yes
+  become_user: '{{hadoop_user}}'
   #when: ( hadoop_type_of_node == 'master' ) or ( hadoop_type_of_node == 'resourcemanager' )
-#  ignore_errors: yes
+  ignore_errors: yes
