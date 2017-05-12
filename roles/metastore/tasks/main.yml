@@ -1,4 +1,6 @@
 ---
+- name: Drop old metastore
+  include: drop_metastore.yml
 
 - name: Create new metastore
   include: create_metastore.yml

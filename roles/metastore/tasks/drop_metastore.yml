@@ -1,4 +1,12 @@
 ---
+- name: Stop metastore daemon
+  service:
+    name: hive-metastore
+    enabled: yes
+    state: stopped
 
-- name: Remove old metastore
-  shell: "dropdb hive_metastore --username postgres"
+- name: Remove old metastore db
+  shell: "dropdb --if-exists hive_metastore --username postgres"
+
+- name: Create new empty metastore db
+  shell: "createdb hive_metastore --username postgres"
