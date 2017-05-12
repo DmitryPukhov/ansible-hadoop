@@ -1,0 +1,4 @@
+---
+
+- name: Remove old metastore
+  shell: "dropdb hive_metastore --username postgres"

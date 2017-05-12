@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+  <property>
+    <name>tez.lib.uris</name>
+    <value>${fs.default.name}/apps/tez/tez.tar.gz</value>
+  </property>
+
+  <property>
+    <name>tez.use.cluster.hadoop-libs</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>tez.am.resource.memory.mb</name>
+    <value>{{tez_am_resource_memory_mb}}</value>
+  </property>
+
+  <property>
+    <name>tez.am.java.opts</name>
+    <value>{{tez_am_java_opts}}</value>
+  </property>
+
+  <property>
+    <name>tez.task.log.level</name>
+    <value>WARN</value>
+  </property>
+
+  <property>
+    <name>tez.runtime.shuffle.connect.timeout</name>
+    <value>360000</value>
+  </property>
+
+ <property>
+    <name>tez.runtime.shuffle.read.timeout</name>
+    <value>360000</value>
+  </property>
+
+
+
+</configuration>

@@ -1,0 +1,37 @@
+---
+
+#- name: Hadoop cluster
+ #Deploy & configure hadoop on cluster
+- name: Hadoop cluster provisioning
+  hosts: hadoop_all
+  user: user1
+  sudo: yes
+  roles:
+    - hadoop
+
+
+#- name: Install hive
+#  hosts: hadoop_all
+#  user: user1
+#  sudo: yes
+#  roles:
+#   - hive
+
+#- name: Install postgresql for metastore
+#  hosts: hadoop_master
+#  user: user1
+#  sudo: yes
+#  vars_files:
+#   - ./roles/metastore/group_vars/metastore
+#  roles:
+#   - ANXS.postgresql
+
+
+#- name: Init Hive metastore
+#  hosts: hadoop_master
+#  user: user1
+#
+#  sudo: yes
+#  roles:
+#    - metastore
+

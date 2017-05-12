@@ -1,0 +1,7 @@
+---
+- name: Install tez
+  hosts: hadoop_all
+  user: user1
+  sudo: yes
+  roles:
+   - tez

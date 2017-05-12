@@ -1,0 +1,12 @@
+[Unit]
+Description=Hadoop namenode
+After=yarn-nodemanager
+
+[Service]
+ExecStart={{ hadoop_home }}/bin/yarn proxyserver
+User=hadoop
+Group=hadoop
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,30 @@
+---
+##
+- name: PostgreSQL Remove old metastore if exists
+  hosts: hadoop_master
+  user: user1
+  sudo: yes
+  tasks:
+   - include: ./roles/metastore/tasks/drop_metastore.yml
+  ignore_errors: yes
+#
+#
+- name: Install postgresql for metastore
+  hosts: hadoop_master
+  user: user1
+  sudo: yes
+  vars_files:
+   - ./roles/metastore/group_vars/metastore.yml
+  roles:
+   - ANXS.postgresql
+
+- name: Init Hive metastore
+  hosts: hadoop_master
+  user: user1
+  sudo: yes
+  environment:
+    HADOOP_HOME: '{{ hadoop_home }}'
+    HIVE_CONF_DIR: '{{ hive_home }}/conf'
+  roles:
+    - metastore
+

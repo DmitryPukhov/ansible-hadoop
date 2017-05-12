@@ -1,6 +1,0 @@
----
- - name: test
-   shell: echo "test" >> /home/user1/test.txt
-
- - name: test2
-   shell: echo "test2" >> /home/user1/test.txt

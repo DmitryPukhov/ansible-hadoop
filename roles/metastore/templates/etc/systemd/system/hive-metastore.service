@@ -1,0 +1,13 @@
+[Unit]
+Description=Hive metastore service
+After=yarn-nodemanager
+
+[Service]
+ExecStart={{ hive_home }}/bin/hive --service metastore
+User=hadoop
+Group=hadoop
+Environment=HIVE_CONF_DIR={{ hive_home }}/conf
+Environment=HADOOP_HOME={{ hadoop_home }}
+
+[Install]
+WantedBy=multi-user.target

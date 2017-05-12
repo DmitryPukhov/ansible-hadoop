@@ -1,0 +1,50 @@
+---
+# Basic settings
+postgresql_version: 9.5
+postgresql_encoding: 'UTF-8'
+postgresql_locale: 'en_US.UTF-8'
+postgresql_ctype: 'en_US.UTF-8'
+
+postgresql_admin_user: "postgres"
+postgresql_default_auth_method: "trust"
+
+postgresql_service_enabled: true # should the service be enabled, default is true
+
+postgresql_cluster_name: "main"
+postgresql_cluster_reset: false
+
+postgresql_listen_addresses: '*'
+
+postgresql_pg_hba_trust_hosts:
+ - 192.168.1.0/24
+
+# Hadoop users to be created
+postgresql_users:
+  - name: hadoop
+    pass: 123qwe!@#
+    encrypted: no       # denotes if the password is already encrypted.
+
+
+# List of databases to be created (optional)
+# Note: for more flexibility with extensions use the postgresql_database_extensions setting.
+
+
+postgresql_databases:
+  - name: hive_metastore
+    owner: hadoop          # optional; specify the owner of the database
+    encoding: 'UTF-8'   # override global {{ postgresql_encoding }} variable per database
+    state: present
+
+postgresql_admin_user: "postgres"
+postgresql_default_auth_method: "trust"
+
+# List of user privileges to be applied (optional)
+postgresql_user_privileges:
+  - name: hadoop                   # user name
+    db: hive_metastore                  # database
+    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+    role_attr_flags: "CREATEDB" # role attribute flags
+  - name: user1                   # user name
+    db: foobar                  # database
+    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+    role_attr_flags: "CREATEDB" # role attribute flags

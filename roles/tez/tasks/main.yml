@@ -1,0 +1,7 @@
+---
+
+- name: download tez
+  include: download.yml
+
+- name: copy tez to hdfs
+  include: copy-tez.yml

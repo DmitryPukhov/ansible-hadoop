@@ -1,7 +1,5 @@
 ---
 
-#- name: Hadoop cluster
- #Deploy & configure hadoop on cluster
 - name: Hadoop cluster provisioning
   hosts: hadoop_all
   user: user1
@@ -9,8 +7,8 @@
   roles:
     - hadoop
 
-
 - name: Install hive
+  description: Only copy files. Services will be started later, after metastore, tez and llap
   hosts: hadoop_all
   user: user1
   sudo: yes
@@ -25,7 +23,6 @@
    - ./roles/metastore/group_vars/metastore
   roles:
    - ANXS.postgresql
-
 
 - name: Init Hive metastore
   hosts: hadoop_master

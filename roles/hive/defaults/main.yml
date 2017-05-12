@@ -1,0 +1,34 @@
+---
+
+#java_home: /usr/java/jdk1.8.0_92
+hive_home: /opt/hive
+hadoop_home: /opt/hadoop
+
+hive_version: 2.1.1
+hive_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hive/hive-{{ hive_version }}"]
+
+hive_var_prefix: /var/lib/hive
+hive_log_prefix: /var/log/hive
+
+
+tez_version: 0.8.4
+
+#metastore_db_host: hdp001
+#metastore_db_name: metastore
+#metastore_db_user: hive
+#metastore_db_password: hive_password
+
+hadoop_binary: /opt/hadoop/bin/hadoop
+hadoop_extra_options: "--config /opt/hadoop/conf"
+hadoop_user: hadoop
+hadoop_group: hadoop
+
+
+hive_tez_container_size: 5120 
+hive_tez_java_opts: -Xmx4096m
+hive_auto_convert_join_noconditionaltask_size: 1342177000
+
+
+tez_am_resource_memory_mb: 5120
+tez_am_java_opts: -Xmx4096m
+

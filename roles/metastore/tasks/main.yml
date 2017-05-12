@@ -1,0 +1,8 @@
+---
+
+- name: Create new metastore
+  include: create_metastore.yml
+
+- name: Start Hive metastore
+  include: autostart.yml
+

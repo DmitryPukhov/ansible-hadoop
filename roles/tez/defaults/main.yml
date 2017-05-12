@@ -1,0 +1,14 @@
+---
+
+hive_version: 2.1.1
+tez_version: 0.8.4
+tez_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/tez/{{ tez_version }}"]
+tez_home: /opt/tez
+
+#hadoop_binary: /home/cloudera/fls/hdfs.sh
+hadoop_binary: "/opt/hadoop/bin/hadoop fs "
+hadoop_extra_options: "--config /opt/hadoop/conf"
+hadoop_user: hadoop
+hadoop_group: hadoop
+
+

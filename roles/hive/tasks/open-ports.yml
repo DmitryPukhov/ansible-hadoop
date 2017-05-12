@@ -2,7 +2,7 @@
 
 - name: Open hadoop ports
   iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
-  ignore_errors: no
+  ignore_errors: yes
   with_items:
   - 9000
   - 8088

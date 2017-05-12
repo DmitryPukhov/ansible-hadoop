@@ -1,0 +1,28 @@
+---
+# Copy tez libs to hdfs folder /apps/tez
+
+- name: check if /apps/tez/tez.tar.gz exists in HDFS
+  shell: "{{ hadoop_binary }} -ls /apps/tez/tez.tar.gz"
+  ignore_errors: True
+  sudo_user: "{{ hadoop_user }}"
+  register: result
+  sudo: yes
+
+- name: check if /apps/tez exists in HDFS
+  shell: "{{ hadoop_binary }} -ls /apps/tez"
+  ignore_errors: True
+  sudo_user: "{{ hadoop_user }}"
+  register: result1
+  sudo: yes
+
+- name: create /apps/tez
+  shell: "{{ hadoop_binary }} -mkdir -p /apps/tez"
+  sudo: yes
+  sudo_user: "{{ hadoop_user }}"
+  when: result1|failed
+
+- name: put TEZ libs to HDFS
+  shell: "{{ hadoop_binary }} -copyFromLocal {{ tez_home }}/share/tez.tar.gz /apps/tez"
+  sudo: yes
+  sudo_user: "{{ hadoop_user }}"
+  when: result|failed

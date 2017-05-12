@@ -1,0 +1,7 @@
+---
+- name: Copy configs to hive/conf
+  template:
+    src: "templates/tez/conf/{{ item }}"
+    dest: "{{ hive_home }}/conf/{{ item }}"
+  with_items:
+    - tez-site.xml

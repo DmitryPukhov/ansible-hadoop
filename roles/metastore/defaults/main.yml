@@ -1,0 +1,3 @@
+hadoop_user: hadoop
+hive_home: /opt/hive
+hadoop_home: /opt/hadoop

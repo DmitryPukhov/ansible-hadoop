@@ -1,0 +1,12 @@
+[Unit]
+Description=Hiveserver2
+After=hive-metastore.service
+
+[Service]
+ExecStart={{ hive_home }}/bin/hive --service hiveserver2
+User=hadoop
+Group=hadoop
+
+
+[Install]
+WantedBy=multi-user.target

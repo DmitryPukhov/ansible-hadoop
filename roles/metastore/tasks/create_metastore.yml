@@ -1,0 +1,19 @@
+---
+- name: Open postgresql port
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
+  ignore_errors: yes
+  with_items:
+  - 5432
+
+- name: Restart networking service
+  service: name=networking state=restarted
+
+- name: download postgres driver
+  become_user: hadoop
+  copy: src="postgresql-9.4.1209.jre7.jar" dest={{ hive_home }}/lib/postgresql-9.4.1209.jre7.jar
+
+
+- name: Init metastore
+  become_user: hadoop
+  command: "{{ hive_home }}/bin/schematool -initSchema -dbType postgres"
+

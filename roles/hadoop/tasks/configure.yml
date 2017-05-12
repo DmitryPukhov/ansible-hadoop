@@ -40,8 +40,15 @@
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
     dest: '/etc/bash.bashrc'
-    line: 'export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin # HADOOP-BIN-PATH'
+    line: 'export PATH=$PATH:{{ hadoop_home }}/bin:{{ hadoop_home }}/sbin # HADOOP-BIN-PATH'
     regexp: '# HADOOP-BIN-PATH'
+- name: add PATH to HADOOP_HOME/bin in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export HADOOP_HOME={{ hadoop_home }}'
+    regexp: '^(# *)?export HADOOP_HOME'
+
 
 - name: Ensure hadoop/conf directory exists
   file:

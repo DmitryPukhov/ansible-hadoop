@@ -1,0 +1,24 @@
+---
+- name: download tez
+  get_url:
+    url: '{{ tez_mirrors|random }}/apache-tez-{{ tez_version }}-bin.tar.gz'
+    dest: '{{ tez_home }}-apache-tez-{{ tez_version }}-bin.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+- name: unpack Tez
+  command: bash -c "cd /opt && tar xzf {{ tez_home }}-apache-tez-{{ tez_version }}-bin.tar.gz" creates={{ tez_home }}-apache-tez-{{ tez_version }}-bin
+
+- name: make a link /opt/tez
+  file: state=link src=/opt/apache-tez-{{ tez_version }}-bin dest={{ tez_home }}
+
+- name: chown tez folder owner to tez user
+  file:
+    path: "/opt/apache-tez-{{ tez_version }}-bin"
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+    recurse: yes
