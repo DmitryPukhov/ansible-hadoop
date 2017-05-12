@@ -342,7 +342,7 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>jdbc:postgresql://{{ hadoop_master }}:5432/hive_metastore</value>
+    <value />
     <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
   </property>
   <property>
@@ -693,7 +693,7 @@ jdbc:derby:;databaseName=metastore_db;create=true
   </property>
   <property>
     <name>datanucleus.schema.autoCreateAll</name>
-    <value>true</value>
+    <value>false</value>
     <description>Auto creates necessary schema on a startup if one doesn't exist. Set this to false, after creating it once.To enable auto create also set hive.metastore.schema.verification=false. Auto creation is not recommended for production use cases, run schematool command instead.</description>
   </property>
   <property>

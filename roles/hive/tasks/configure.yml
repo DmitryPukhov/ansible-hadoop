@@ -9,6 +9,14 @@
     - hive-log4j2.properties
     - hive-env.sh
 
+- name: add HIVE_HOME to hive/bin in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export HIVE_HOME={{ hive_home }}'
+    regexp: '^(# *)?export HIVE_HOME'
+
+
 - name: add PATH to hive/bin in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
