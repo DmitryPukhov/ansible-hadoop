@@ -23,6 +23,8 @@ hadoop_extra_options: "--config /opt/hadoop/conf"
 hadoop_user: hadoop
 hadoop_group: hadoop
 
+hive_user: hadoop
+
 
 hive_tez_container_size: 5120 
 hive_tez_java_opts: -Xmx4096m

@@ -54,12 +54,12 @@
   </property>
   <property>
     <name>hive.exec.local.scratchdir</name>
-    <value>/tmp/hive</value>
+    <value>/home/{{ hive_user }}/tmp/hive</value>
     <description>Local scratch space for Hive jobs</description>
   </property>
   <property>
     <name>hive.downloaded.resources.dir</name>
-    <value>/tmp/hive</value>
+    <value>/home/{{ hive_user }}/tmp/hive</value>
     <description>Temporary local directory for added resources in the remote file system.</description>
   </property>
   <property>

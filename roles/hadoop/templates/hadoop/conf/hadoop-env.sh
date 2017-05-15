@@ -17,6 +17,8 @@
 # Set Hadoop-specific environment variables here.
 
 export HADOOP_PREFIX={{ hadoop_home }}
+export HADOOP_HOME={{ hadoop_home }}
+export HADOOP_LOG_DIR={{ hadoop_home }}/logs
 
 # The only required environment variable is JAVA_HOME.  All others are
 # optional.  When running a distributed configuration it is best to

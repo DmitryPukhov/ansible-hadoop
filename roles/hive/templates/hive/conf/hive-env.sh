@@ -48,6 +48,8 @@
 # Set HADOOP_HOME to point to a specific hadoop install directory
 # HADOOP_HOME=${bin}/../../hadoop
 export HADOOP_HOME={{ hadoop_home }}
+export HIVE_HOME={{ hive_home }}
+
 # Hive Configuration Directory can be controlled by:
 export HIVE_CONF_DIR={{ hive_home }}/conf
 
