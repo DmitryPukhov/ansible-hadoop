@@ -5368,6 +5368,7 @@ jdbc:derby:;databaseName=metastore_db;create=true
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>127.0.0.1</value>
+    <value>${yarn.resourcemanager.hostname}:8032</value>
   </property>
+
 </configuration>

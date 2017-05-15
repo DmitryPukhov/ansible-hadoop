@@ -1,7 +1,20 @@
 ---
-- name: Copy configs to hive/conf
+- name: Copy configs to tez/conf
   template:
     src: "templates/tez/conf/{{ item }}"
-    dest: "{{ hive_home }}/conf/{{ item }}"
+    dest: "{{ tez_home }}/conf/{{ item }}"
   with_items:
     - tez-site.xml
+
+
+- name: set TEZ_CONF_DIR in /etc/bash.bashrc
+  lineinfile:
+    dest: '/etc/bash.bashrc'
+    line: 'export TEZ_CONF_DIR={{ tez_home }}/conf'
+    regexp: '^(# *)?export TEZ_CONF_DIR'
+
+- name: Extend HADOOP_CLASSPATH to tez jars and conf
+  lineinfile:
+    dest: '/etc/bash.bashrc'
+    line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:{{ tez_home }}/conf:{{ tez_home }}/lib/*:{{ tez_home }}/lib/* # TEZ_HADOOP_CLASSPATH'
+    regexp: '# TEZ_HADOOP_CLASSPATH'

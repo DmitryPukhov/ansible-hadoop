@@ -8,7 +8,14 @@
         <name>yarn.resourcemanager.webapp.address</name>
         <value>0.0.0.0:8088</value>
     </property>
-
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
     {% for key, value in yarn_props.iteritems() %}
     <property>
         <name>{{ key }}</name>
