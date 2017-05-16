@@ -1,0 +1,30 @@
+---
+
+- name: Copy service files
+  template:
+    src: 'templates/etc/systemd/system/{{ item }}'
+    dest: '/etc/systemd/system/{{ item }}'
+    #sudo: yes
+    #force: true
+    #mode: 0755
+  with_items:
+      - hadoop-namenode.service
+      - hadoop-secondarynamenode.service
+      - hadoop-datanode.service
+      - yarn-nodemanager.service
+      - yarn-resourcemanager.service
+      - yarn-proxyserver.service
+
+- name: Activate daemons
+  service:
+    name: '{{ item }}'
+    enabled: yes
+    state: reloaded
+    state: started
+  with_items:
+      - hadoop-namenode
+      - hadoop-secondarynamenode
+      - hadoop-datanode
+      - yarn-nodemanager
+      - yarn-resourcemanager
+      - yarn-proxyserver

@@ -1,0 +1,21 @@
+---
+- name: Add a fast check to speed reconfiguration
+  stat: path=/opt/hadoop
+  register: hadoop_installed
+
+- name: Open hadoop ports
+  include: open-ports.yml
+
+- name: Download and copy files to destination
+  include: download.yml
+  when: not hadoop_installed.stat.exists
+
+- name: Configuration changes
+  include: configure.yml
+
+- name: Autostart set up
+  include: autostart.yml
+
+#- name: Start hdfs and yarn
+#  include: restart-services.yml
+

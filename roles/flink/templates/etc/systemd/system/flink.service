@@ -1,0 +1,12 @@
+[Unit]
+Description=Hadoop namenode
+After=yarn-resourcemanager
+
+[Service]
+ExecStart={{ hadoop_home }}/bin/yarn nodemanager
+User=hadoop
+Group=hadoop
+
+
+[Install]
+WantedBy=multi-user.target
