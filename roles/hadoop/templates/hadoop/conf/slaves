@@ -1,7 +1,4 @@
-localhost
 
-{% for host in groups['all'] %}
-{% if hostvars[host]['ansible_hostname'] != hadoop_master %}
+{% for host in groups['hadoop_all'] %}
 {{ hostvars[host]['ansible_hostname'] }}
-{% endif %}
 {% endfor %}

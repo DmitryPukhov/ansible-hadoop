@@ -1,0 +1,12 @@
+# User
+flink_user: hadoop
+flink_group: hadoop
+
+# Where to install flink
+flink_home: /opt/flink
+
+# Where to download flink
+flink_download_url: "http://apache-mirror.rbc.ru/pub/apache/flink/flink-1.2.1/flink-1.2.1-bin-hadoop27-scala_2.11.tgz"
+
+# Hadoop version to install
+flink_version: 1.2.1

@@ -1,4 +1,5 @@
 ---
+
 - name: Add a fast check to speed reconfiguration
   stat: path=/opt/hadoop
   register: hadoop_installed
@@ -15,7 +16,4 @@
 
 - name: Autostart set up
   include: autostart.yml
-
-#- name: Start hdfs and yarn
-#  include: restart-services.yml
 

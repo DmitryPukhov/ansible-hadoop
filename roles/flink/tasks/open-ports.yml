@@ -1,20 +1,11 @@
 ---
 
-- name: Open hadoop ports
+- name: Open flink ports
   iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
   ignore_errors: no
   with_items:
-  - 9000
-  - 8088
-  - 8090
-  - 50010
-  - 50030
-  - 8030
-  - 8020
-  - 8031
-  - 8032
-  - 15001
-  - 9001
+  - 8081
+  - 6123
 
 - name: Open all ports from ip {{ item.1 }} in the firewall
   iptables: chain=INPUT jump=ACCEPT protocol=tcp source {{ item.1 }}

@@ -1,6 +1,7 @@
 [hadoop_all]
 # Hadoop cluster nodes
 hdp001 hadoop_type_of_node=hadoop_master
+hdp002
 
 [hadoop_master]
 hdp001

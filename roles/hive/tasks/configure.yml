@@ -24,5 +24,11 @@
     line: 'export PATH=$PATH:{{ hive_home }}/bin # HIVE-BIN-PATH'
     regexp: '# HIVE-BIN-PATH'
 
+- name: add PATH to hive/lib in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ hive_home }}/lib # HIVE-LIB-PATH'
+    regexp: '# HIVE-LIB-PATH'
 
 

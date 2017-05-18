@@ -1,11 +1,12 @@
 [Unit]
-Description=Hadoop namenode
+Description=Apache Flink
 After=yarn-resourcemanager
 
 [Service]
-ExecStart={{ hadoop_home }}/bin/yarn nodemanager
-User=hadoop
-Group=hadoop
+ExecStart={{ flink_home }}/bin/start-cluster.sh
+User={{ flink_user }}
+Group={{ flink_group }}
+WorkingDirectory={{ flink_home }}
 
 
 [Install]

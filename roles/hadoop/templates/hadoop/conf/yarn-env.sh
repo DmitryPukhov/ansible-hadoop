@@ -14,6 +14,8 @@
 # limitations under the License.
 
 export JAVA_HOME={{java_home }}
+
+export HADOOP_YARN_HOME={{ hadoop_home }}
 # User for YARN daemons
 #export HADOOP_YARN_USER=${HADOOP_YARN_USER:-yarn}
 export HADOOP_YARN_USER={{ hadoop_user }}

@@ -6,7 +6,7 @@
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address</name>
-        <value>0.0.0.0:8088</value>
+        <value>{{ hadoop_master }}:8088</value>
     </property>
     <property>
         <name>yarn.nodemanager.aux-services</name>

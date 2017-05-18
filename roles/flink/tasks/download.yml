@@ -1,1 +1,34 @@
-#!/usr/bin/env bash
+
+- name: download flink
+  get_url:
+    url: '{{ flink_download_url }}'
+    dest: '{{ flink_home }}-{{ flink_version }}.tgz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+
+- name: extract flink tarball
+  command: '/usr/bin/env tar xf flink-{{ flink_version }}.tgz'
+  args:
+    chdir: '{{ flink_home }}/..'
+    creates: '{{ flink_home }}/flink-{{ flink_version }}'
+  sudo: yes
+
+- name: chown to flink user
+  file:
+    dest: '{{ flink_home }}-{{ flink_version }}'
+    owner: '{{ flink_user }}'
+    group: '{{ flink_group }}'
+    recurse: yes
+
+- name: create link to flink
+  file:
+    src: '{{ flink_home }}-{{ flink_version }}'
+    dest: '{{ flink_home }}'
+    state: link
+    owner: '{{ flink_user }}'
+    group: '{{ flink_group }}'
