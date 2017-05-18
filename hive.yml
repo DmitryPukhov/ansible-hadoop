@@ -2,7 +2,7 @@
 # Only copy files, do not start services.
 
 - name: Install hive
-  hosts: hadoop_all
+  hosts: hadoop_master
   user: user1
   sudo: yes
   roles:

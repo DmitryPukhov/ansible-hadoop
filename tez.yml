@@ -1,6 +1,6 @@
 ---
 - name: Install tez
-  hosts: hadoop_all
+  hosts: tez_master
   user: user1
   sudo: yes
   roles:

@@ -89,6 +89,7 @@
 - name: format namenode
   command: "{{ hadoop_home }}/bin/hdfs namenode -format -force -nonInteractive creates=/home/{{ hadoop_user }}/data/hdfs/namenode"
 
+
 - name: chown to hadoop user
   file:
     dest: '/home/{{ hadoop_user }}/data'

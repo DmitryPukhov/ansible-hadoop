@@ -2,7 +2,7 @@
 # Only copy files, do not start services.
 
 - name: Install flink
-  hosts: hadoop_master
+  hosts: hadoop_all
   user: user1
   sudo: yes
   roles:
