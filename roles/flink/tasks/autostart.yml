@@ -6,13 +6,21 @@
     dest: '/etc/systemd/system/{{ item }}'
     force: true
   with_items:
-      - flink.service
+    - flink-jobmanager.service
+    - flink-taskmanager.service
 
-- name: Activate daemons
+
+- name: Activate Flink job managers on masters
+  when: hadoop_type_of_node == "hadoop_master"
   service:
-    name: '{{ item }}'
+    name: flink-jobmanager
     enabled: yes
     state: reloaded
     state: started
-  with_items:
-      - flink
+
+- name: Activate Flink task managers on slaves
+  service:
+    name: flink-taskmanager
+    enabled: yes
+    state: reloaded
+    state: started

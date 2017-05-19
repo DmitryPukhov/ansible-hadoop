@@ -1,8 +1,8 @@
 [hadoop_all]
 # Hadoop cluster nodes
-#hdp001 hadoop_type_of_node=hadoop_master
-hdp002
-hdp003
+hdp001 hadoop_type_of_node=hadoop_master
+hdp002 hadoop_type_of_node=hadoop_slave
+hdp003 hadoop_type_of_node=hadoop_slave
 
 [hadoop_master]
 hdp001

@@ -1,9 +1,9 @@
 [Unit]
 Description=Apache Flink
-After=yarn-resourcemanager
+After=hadoop-datanode
 
 [Service]
-ExecStart={{ flink_home }}/bin/start-cluster.sh
+ExecStart={{ flink_home }}/bin/flink-daemon.sh start jobmanager
 User={{ flink_user }}
 Group={{ flink_group }}
 WorkingDirectory={{ flink_home }}

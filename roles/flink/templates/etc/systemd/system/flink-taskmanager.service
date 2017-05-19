@@ -1,0 +1,13 @@
+[Unit]
+Description=Apache Flink
+After=flink-jobmanager
+
+[Service]
+ExecStart={{ flink_home }}/bin/flink-daemon.sh start taskmanager
+User={{ flink_user }}
+Group={{ flink_group }}
+WorkingDirectory={{ flink_home }}
+
+
+[Install]
+WantedBy=multi-user.target
