@@ -7,5 +7,6 @@ hdp003 hadoop_type_of_node=hadoop_slave
 [hadoop_master]
 hdp001
 
+
 [tez_master]
 hdp001

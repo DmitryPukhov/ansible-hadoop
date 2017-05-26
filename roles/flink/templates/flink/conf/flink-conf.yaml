@@ -30,7 +30,7 @@
 # automatically configure the host name based on the hostname of the node where the
 # JobManager runs.
 
-jobmanager.rpc.address: {{ hadoop_master }}
+jobmanager.rpc.address: {{ flink_master }}
 
 # The RPC port where the JobManager is reachable.
 
@@ -39,12 +39,12 @@ jobmanager.rpc.port: 6123
 
 # The heap size for the JobManager JVM
 
-jobmanager.heap.mb: 256
+jobmanager.heap.mb: 1024
 
 
 # The heap size for the TaskManager JVM
 
-taskmanager.heap.mb: 2000
+taskmanager.heap.mb: 1024
 
 
 # The number of task slots that each TaskManager offers. Each slot runs one parallel pipeline.

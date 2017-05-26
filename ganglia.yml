@@ -1,0 +1,22 @@
+---
+
+- name: Install Ganglia to hadoop cluster
+  hosts: hadoop_all
+  user: user1
+  sudo: yes
+  roles:
+    - { role: "micafer.ganglia", ganglia_gmetad: "{{ hadoop_master }}" }
+
+- name: Install Ganglia to hadoop cluster
+  hosts: "hadoop_master"
+  user: user1
+  sudo: yes
+  roles:
+    - { role: "micafer.ganglia", ganglia_gmetad: "{{ hadoop_master }}", ganglia_type_of_node="master" }
+
+
+#- name: Install Ganglia to hadoop cluster
+#  hosts: hadoop_all
+#  become_user: hadoop
+#  roles:
+#    { role: ganglia, ganglia_gmetad: "{{ hadoop_master }}"}

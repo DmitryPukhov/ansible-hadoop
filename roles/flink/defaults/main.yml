@@ -1,6 +1,7 @@
 # User
 flink_user: hadoop
 flink_group: hadoop
+flink_master: hdp002
 
 # Where to install flink
 flink_home: /opt/flink
