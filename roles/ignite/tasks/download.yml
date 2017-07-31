@@ -1,0 +1,37 @@
+---
+
+#- name: download ignite
+#  get_url:
+#    url: '{{ ignite_download_url }}'
+#    dest: '{{ ignite_home }}-{{ ignite_version }}.zip'
+#    force: no
+#  register: result
+#  until: result|success
+#  retries: 5
+#  delay: 2
+#  sudo: yes
+#
+#
+#- name: extract ignite archive
+#  command: '/usr/bin/env unzip ignite-{{ ignite_version }}.zip'
+#  args:
+#    chdir: '{{ ignite_home }}/..'
+#    creates: 'apache-ignite-fabric-{{ ignite_version }}-bin'
+#  sudo: yes
+
+
+- name: chown to ignite user
+  file:
+    dest: '{{ ignite_home }}'
+    owner: '{{ ignite_user }}'
+    group: '{{ ignite_group }}'
+    recurse: yes
+
+
+- name: create link to ignite
+  file:
+    src: '{{ ignite_home }}'
+    dest: '/opt/ignite'
+    state: link
+    owner: '{{ ignite_user }}'
+    group: '{{ ignite_group }}'

@@ -1,0 +1,22 @@
+---
+
+
+- name: copy ignite libs to enable Ignite REST interface
+  copy: src="{{ item }}" dest= "{{ ignite_home}}/libs"
+  sudo: yes
+  with_fileglob:
+    - "{{ ignite_home }}/libs/optional/ignite-rest-http/*.jar"
+
+- name: set IGNITE_HOME in .bashrc
+  lineinfile:
+    #dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export IGNITE_HOME={{ ignite_home }}'
+    regexp: '^(# *)?export IGNITE_HOME='
+
+- name: chown to ignite user
+  file:
+    dest: '{{ ignite_home }}'
+    owner: '{{ ignite_user }}'
+    group: '{{ ignite_group }}'
+    recurse: yes

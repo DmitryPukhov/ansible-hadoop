@@ -1,0 +1,12 @@
+[Unit]
+Description=Apache Ignite
+
+[Service]
+ExecStart={{ ignite_home }}/bin/ignite.sh
+User={{ ignite_user }}
+Group={{ ignite_group }}
+WorkingDirectory={{ ignite_home }}
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+---
+
+#- name: Hadoop cluster
+ #Deploy & configure hadoop on cluster
+- name: Apache ignite provisioning
+  hosts: hadoop_all
+  user: user1
+  sudo: yes
+  roles:
+    - ignite
+
+

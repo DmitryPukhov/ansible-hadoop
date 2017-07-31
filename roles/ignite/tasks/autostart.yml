@@ -1,0 +1,17 @@
+---
+
+- name: Copy service files
+  template:
+    src: 'templates/etc/systemd/system/{{ item }}'
+    dest: '/etc/systemd/system/{{ item }}'
+    force: true
+  with_items:
+    - ignite-node.service
+
+
+- name: Activate ignite node on machines
+  service:
+    name: ignite-node
+    enabled: yes
+    state: reloaded
+    state: started
