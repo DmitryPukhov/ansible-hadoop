@@ -3,7 +3,7 @@ Description=Hadoop secondary namenode
 After=network.target
 
 [Service]
-ExecStart={{ hadoop_home }}/bin/hadoop secondarynamenode
+ExecStart={{ hadoop_home }}/bin/hdfs secondarynamenode
 User={{ hadoop_user }}
 Group={{ hadoop_group }}
 Environment=HADOOP_CONF_DIR={{ hadoop_home }}/conf
