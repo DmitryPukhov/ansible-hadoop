@@ -73,7 +73,8 @@
     - 'yarn-site.xml'
     - 'core-site.xml'
     - 'capacity-scheduler.xml'
-    - 'slaves'
+    - 'workers'
+    - 'log4j.properties'
 
 - name: delete old hdfs data
   file:

@@ -15,18 +15,8 @@
       - yarn-resourcemanager.service
       - yarn-proxyserver.service
 
-- name: Activate slave daemons
-  service:
-    name: '{{ item }}'
-    enabled: yes
-    state: reloaded
-    state: started
-  with_items:
-      - hadoop-datanode
-      - yarn-nodemanager
-
 - name: Activate master daemons
-  when: hadoop_type_of_node == hadoop_master
+  when: '"hadoop_master" in hadoop_type_of_node'
   service:
     name: '{{ item }}'
     enabled: yes
@@ -37,3 +27,14 @@
       - hadoop-secondarynamenode
       - yarn-resourcemanager
       - yarn-proxyserver
+
+- name: Activate slave daemons
+  when: '"hadoop_slave" in hadoop_type_of_node'
+  service:
+    name: '{{ item }}'
+    enabled: yes
+    state: reloaded
+    state: started
+  with_items:
+      - hadoop-datanode
+      - yarn-nodemanager

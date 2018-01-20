@@ -2,7 +2,7 @@
 
 - name: Hadoop cluster provisioning
   hosts: hadoop_all
-  user: user1
+  user: ansible
   sudo: yes
   roles:
     - hadoop
@@ -10,14 +10,14 @@
 - name: Install hive
   description: Only copy files. Services will be started later, after metastore, tez and llap
   hosts: hadoop_all
-  user: user1
+  user: ansible
   sudo: yes
   roles:
    - hive
 
 - name: Install postgresql for metastore
   hosts: hadoop_master
-  user: user1
+  user: ansible
   sudo: yes
   vars_files:
    - ./roles/metastore/group_vars/metastore
@@ -26,7 +26,7 @@
 
 - name: Init Hive metastore
   hosts: hadoop_master
-  user: user1
+  user: ansible
   sudo: yes
   roles:
     - metastore

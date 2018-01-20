@@ -4,8 +4,9 @@ After=network.target
 
 [Service]
 ExecStart={{ hadoop_home }}/bin/yarn resourcemanager
-User=hadoop
-Group=hadoop
+User={{ hadoop_user }}
+Group={{ hadoop_group }}
+Environment=HADOOP_CONF_DIR={{ hadoop_home }}/conf
 
 
 [Install]

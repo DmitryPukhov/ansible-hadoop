@@ -52,5 +52,12 @@
     owner: '{{ hadoop_user }}'
     group: '{{ hadoop_group }}'
 
+- name: Creates directory
+  file:
+    path: '{{ hadoop_home }}-{{ hadoop_version }}/logs'
+    state: directory
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+
 
 

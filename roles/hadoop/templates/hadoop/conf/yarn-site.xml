@@ -16,6 +16,11 @@
         <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
     </property>
+    <property>
+        <name>yarn.web-proxy.address</name>
+        <value>{{ hadoop_master }}:8100</value>
+    </property>
+
     {% for key, value in yarn_props.iteritems() %}
     <property>
         <name>{{ key }}</name>
