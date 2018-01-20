@@ -58,6 +58,7 @@
     state: directory
     owner: '{{ hadoop_user }}'
     group: '{{ hadoop_group }}'
+    mode: 0664
 
 
 

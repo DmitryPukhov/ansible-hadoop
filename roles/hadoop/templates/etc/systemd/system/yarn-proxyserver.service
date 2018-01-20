@@ -1,6 +1,6 @@
 [Unit]
 Description=Hadoop namenode
-After=yarn-nodemanager
+After=network.target
 
 [Service]
 ExecStart={{ hadoop_home }}/bin/yarn proxyserver

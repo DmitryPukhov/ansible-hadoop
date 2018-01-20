@@ -5,7 +5,7 @@
     src: 'templates/etc/systemd/system/{{ item }}'
     dest: '/etc/systemd/system/{{ item }}'
     #sudo: yes
-    #force: true
+    force: true
     #mode: 0755
   with_items:
       - hadoop-namenode.service

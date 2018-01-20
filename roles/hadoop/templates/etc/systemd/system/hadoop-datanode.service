@@ -1,6 +1,6 @@
 [Unit]
 Description=Hadoop namenode
-After=hadoop-namenode.service
+After=network.target
 
 [Service]
 ExecStart={{ hadoop_home }}/bin/hadoop datanode

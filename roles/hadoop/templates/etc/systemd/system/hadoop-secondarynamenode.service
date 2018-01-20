@@ -1,5 +1,5 @@
 [Unit]
-Description=Hadoop namenode
+Description=Hadoop secondary namenode
 After=network.target
 
 [Service]

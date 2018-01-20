@@ -1,5 +1,15 @@
 ---
 
+- name: Creates directory
+  file:
+    path: '{{ hadoop_home }}-{{ hadoop_version }}/logs'
+    state: directory
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+    mode: 0664
+    force: yes
+
+
 - name: Add a fast check to speed reconfiguration
   stat: path=/opt/hadoop
   register: hadoop_installed
