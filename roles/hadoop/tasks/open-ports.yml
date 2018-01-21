@@ -4,18 +4,44 @@
   iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
   ignore_errors: no
   with_items:
-  - 9000
-  - 8088
+  - 8020 # Hadoop 2 hdfs namenode
+  - 9820 # Hadoop 3 hdfs namenode
+  - 50070 # Hadoop 2 hdfs namenode http ui
+  - 9870 # Hadoop 3 hdfs namenode http ui
+  - 50470 # Hadoop 2 hdfs namenode https ui
+  - 9871 # Hadoop 3 hdfs namenode https ui
+  - 50091 # Hadoop 2 Secondary namenode http
+  - 9869 # Hadoop 3 Secondary namenode http
+  - 50090 # Hadoop 2 Secondary namenode http ui
+  - 9868 # Hadoop 3 Secondary namenode http
+  - 50020 # Hadoop 2 hdfs dadanode ipc
+  - 9867 # Hadoop 3 hdfs datanode ipc
+  - 50010 # Hadoop 2 hdfs datanode
+  - 9866 # Hadoop 3 hdfs datanode
+  - 50075 # Hadoop 2 hdfs datanode http ui
+  - 9864 # Hadoop 3 hdfs datanode http ui
+  - 50475 # Hadoop 2 hdfs datanode https ui
+  - 9865 # Hadoop 3 hdfs datanode https ui
+  - 9000 # hdfs default
+  - 8088 # Yarn web ui
+  - 19888
   - 8090
-  - 50010
+  - 50100
+  - 50020
   - 50030
-  - 50070
+  - 50060
+  # Namenode
+  - 50090
   - 8030
+  # Datanode
   - 8020
+  - 9820
+  - 9820
   - 8031
   - 8032
   - 15001
   - 9001
+
 
 - name: Open all ports from ip {{ item.1 }} in the firewall
   iptables: chain=INPUT jump=ACCEPT protocol=tcp source {{ item.1 }}
