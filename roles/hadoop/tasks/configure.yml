@@ -1,11 +1,5 @@
 ---
 
-#- name: remove 127.0.1.1 from /etc/hosts
-#  sudo: yes
-#  lineinfile:
-#    dest=/etc/hosts
-#    state=absent
-#    regexp="^127\.0\.\d\.\d\s"
 - name: Commenting a line using the regualr expressions in Ansible.
   sudo: yes
   replace:
