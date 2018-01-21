@@ -6,7 +6,11 @@ After=network.target
 ExecStart={{ hadoop_home }}/bin/yarn proxyserver
 User={{ hadoop_user }}
 Group={{ hadoop_group }}
+Environment=HADOOP_HOME={{ hadoop_home }}
 Environment=HADOOP_CONF_DIR={{ hadoop_home }}/conf
+Environment=YARN_HOME={{ hadoop_home }}
+Environment=YARN_CONF_DIR={{ hadoop_home }}/conf
+
 
 
 [Install]

@@ -22,6 +22,10 @@
         <value>1</value>
     </property>
     <property>
+        <name>dfs.http.address</name>
+        <value>{{ hadoop_master }}:50070</value>
+    </property>
+    <property>
         <name>dfs.namenode.name.dir</name>
         <value>file:/home/{{ hadoop_user }}/data/hdfs/namenode</value>
     </property>

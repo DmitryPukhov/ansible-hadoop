@@ -1,9 +1,11 @@
 ---
+
 - name: remove 127.0.1.1 from /etc/hosts
+  sudo: yes
   lineinfile:
     dest=/etc/hosts
     state=absent
-    regexp="^127\.0\.1\.1\b"
+    regexp="^127\.0\.\d\.\d\s"
 
 - name: remove 127.0.0.1 from /etc/hosts
   lineinfile:
