@@ -1,14 +1,5 @@
 ---
 
-#- name: Hadoop cluster
- #Deploy & configure hadoop on cluster
-#- name: Hadoop cluster provisioning
-#  hosts: hadoop_all
-#  user: ansible
-#  sudo: yes
-#  roles:
-#    - hadoop
-
 # All hadoop deployment
 - name: Hdfs name node
   hosts: hadoop_namenode, hadoop_resourcemanager, hadoop_workers

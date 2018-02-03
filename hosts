@@ -1,3 +1,4 @@
+##########################
 # Hadoop nodes
 [hadoop_namenode]
 hdp1001
@@ -8,8 +9,8 @@ hdp1001
 [hadoop_workers]
 hdp1002
 hdp1003
-
-#HBase
+##########################
+# HBase
 [hbase_master]
 hdp1001
 
@@ -17,23 +18,16 @@ hdp1001
 hdp1002
 hdp1003
 
+##########################
+# Zookeeper
+
 [zookeeper]
 hdp1001
 hdp1002
 hdp1003
 
-#[hadoop_all]
-
-# Hadoop cluster nodes
-
-#hdp1001 hadoop_type_of_node='[ hadoop_master, hadoop_namenode, hbase_master, zk ]' ansible_sudo_pass='123qwe!@#'
-#hdp1002 hadoop_type_of_node='[ hadoop_slave, hbase_regionserver, zk ]' ansible_sudo_pass='123qwe!@#'
-# hdp003 hadoop_type_of_node='[hadoop_slave]'
-
-#[hadoop_master]
-#hdp1001
-
-
+##########################
+# Hive
 [tez_master]
 hdp1001
 
