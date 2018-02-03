@@ -5,16 +5,20 @@
   stat: path=/opt/hadoop
   register: hadoop_installed
 
-- name: Open hadoop ports
-  include: open-ports.yml
-
 - name: Download and copy files to destination
   include: download.yml
   when: not hadoop_installed.stat.exists
 
+- name: Open hadoop ports
+  include: open-ports.yml
+  when: hadoop_installed.stat.exists
+
 - name: Configuration changes
   include: configure.yml
+  when: hadoop_installed.stat.exists
 
 - name: Autostart set up
   include: autostart.yml
+  when: hadoop_installed.stat.exists
+
 

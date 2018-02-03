@@ -1,4 +1,4 @@
-# Hadoopo nodes
+# Hadoop nodes
 [hadoop_namenode]
 hdp1001
 
@@ -7,6 +7,7 @@ hdp1001
 
 [hadoop_workers]
 hdp1002
+hdp1003
 
 #HBase
 [hbase_master]
@@ -14,10 +15,12 @@ hdp1001
 
 [hbase_regionservers]
 hdp1002
+hdp1003
 
 [zookeeper]
-hdp1002
 hdp1001
+hdp1002
+hdp1003
 
 #[hadoop_all]
 

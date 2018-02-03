@@ -4,16 +4,23 @@
   stat: path=/opt/zookeeper
   register: zk_installed
 
-- name: Open zk ports
-  include: open-ports.yml
 
 - name: Download and copy files to destination
   include: download.yml
   when: not zk_installed.stat.exists
-#
+
+- name: Open zk ports
+  include: open-ports.yml
+  when: zk_installed.stat.exists
+
+
 - name: Configuration changes
   include: configure.yml
+  when: zk_installed.stat.exists
+
 #
 - name: Autostart set up
   include: autostart.yml
+  when: zk_installed.stat.exists
+
 
