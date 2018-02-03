@@ -1,0 +1,20 @@
+---
+
+- name: Add a fast check to speed reconfiguration
+  stat: path=/opt/hbase
+  register: hbase_installed
+
+- name: Open hbase ports
+  include: open-ports.yml
+
+- name: Download and copy files to destination
+  include: download.yml
+  when: not hbase_installed.stat.exists
+
+- name: Configuration changes
+  include: configure.yml
+
+# ToDo: set up zookeeper first
+#- name: Autostart set up
+#  include: autostart.yml
+

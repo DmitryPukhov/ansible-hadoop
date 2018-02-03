@@ -1,0 +1,9 @@
+---
+# Deploy & configure hadoop on cluster
+- name: HBase cluster provisioning
+  hosts: hadoop_all
+  user: user1
+  sudo: yes
+  roles:
+    - hadoop
+

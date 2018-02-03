@@ -1,0 +1,13 @@
+[Unit]
+Description=HBase regionserver
+After=hbase-master.service
+
+[Service]
+ExecStart={{ hbase_home }}/bin/hbase-daemon.sh start regionserver
+ExecStop={{ hbase_home }}/bin/hbase-daemon.sh stop regionserver
+User={{ hadoop_user }}
+Group={{ hadoop_group }}
+Environment=HBASE_CONF_DIR={{ hbase_home }}/conf
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+---
+
+- name: Open hbase ports
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
+  ignore_errors: no
+  with_items:
+  - 16010 # HMaster
+  - 16011 # Backup HMaster, offset1
+  - 16020 # HMaster
+  - 16021 # Backup HMaster, offset1
+  - 16030 # HMaster
+  - 16031 # Backup HMaster, offset 1
+
+  - 16200 # Region server
+  - 16201 # Region server, offset 1
+  - 16300 # Region server
+  - 16301 # Region server, offset 1
+
+
+- name: Open all ports from ip {{ item.1 }} in the firewall
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp source {{ item.1 }}
+  ignore_errors: yes
+  with_together:
+      - groups.all
+      - ansible_all_ipv4_addresses

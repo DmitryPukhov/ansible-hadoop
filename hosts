@@ -2,8 +2,8 @@
 
 # Hadoop cluster nodes
 
-hdp1001 hadoop_type_of_node='[ hadoop_master ]' ansible_sudo_pass='123qwe!@#'
-hdp1002 hadoop_type_of_node='[ hadoop_slave ]' ansible_sudo_pass='123qwe!@#'
+hdp1001 hadoop_type_of_node='[ hadoop_master, hadoop_namenode, hbase_master, zk ]' ansible_sudo_pass='123qwe!@#'
+hdp1002 hadoop_type_of_node='[ hadoop_slave, hbase_regionserver, zk ]' ansible_sudo_pass='123qwe!@#'
 # hdp003 hadoop_type_of_node='[hadoop_slave]'
 
 [hadoop_master]

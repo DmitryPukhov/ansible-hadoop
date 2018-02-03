@@ -1,0 +1,64 @@
+---
+# Create hbase user
+- name: add hbase group
+  group: name={{ hbase_group }}
+
+- name: add hbase user
+  user: name={{ hbase_user}} group={{ hbase_group }} groups=sudo home={{ hbase_user_home }} shell=/bin/bash
+
+- name: Apt install {{ item }}
+  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  with_items:
+  - wget
+  - tar
+  - gzip
+  - unzip
+
+- name: install java
+  apt: name={{ java_package }} state=present
+
+- name: download hbase
+  get_url:
+    url: '{{ hbase_mirrors|random }}/hbase-{{ hbase_version }}-bin.tar.gz'
+    dest: '{{ hbase_home }}-{{ hbase_version }}.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+
+- name: extract hbase tarball
+  command: '/usr/bin/env tar xf hbase-{{ hbase_version }}.tar.gz'
+  args:
+    chdir: '{{ hbase_home }}/..'
+    creates: '{{ hbase_home }}/hbase-{{ hbase_version }}'
+  sudo: yes
+
+
+- name: chown to hbase user
+  file:
+    dest: '{{ hbase_home }}-{{ hbase_version }}'
+    owner: '{{ hbase_user }}'
+    group: '{{ hbase_group }}'
+    recurse: yes
+
+- name: create link to hbase
+  file:
+    src: '{{ hbase_home }}-{{ hbase_version }}'
+    dest: '{{ hbase_home }}'
+    state: link
+    owner: '{{ hbase_user }}'
+    group: '{{ hbase_group }}'
+
+#- name: Creates directory
+#  file:
+#    path: '{{ hbase_home }}-{{ hbase_version }}/logs'
+#    state: directory
+#    owner: '{{ hbase_user }}'
+#    group: '{{ hbase_group }}'
+#    mode: 0777
+
+
+

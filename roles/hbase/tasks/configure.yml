@@ -1,0 +1,36 @@
+---
+
+# Note: Hadoop should already be installed and confugured
+
+- name: set HBASE_HOME in .bashrc
+  lineinfile:
+    #dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export HBASE_HOME={{ hbase_home }}'
+    regexp: '^(# *)?export HBASE_HOME='
+
+- name: add PATH to HBASE_HOME/bin in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ hbase_home }}/bin # HBASE-BIN-PATH'
+    regexp: '# HBASE-BIN-PATH'
+
+
+- name: Ensure hbase/conf directory exists
+  file:
+    path: '{{ hbase_home  }}/conf'
+    state: directory
+    owner: '{{ hbase_user }}'
+    group: '{{ hbase_group }}'
+
+
+- name: Copy hbase config files
+  template:
+    src: '{{ item }}'
+    dest: '{{ hbase_home }}/conf/{{ item | basename }}'
+    force: yes
+    owner: '{{ hbase_user }}'
+    group: '{{ hbase_group }}'
+  with_fileglob:
+    - templates/hbase/conf/*

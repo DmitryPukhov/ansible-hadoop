@@ -2,7 +2,7 @@
 # Deploy & configure hadoop on cluster
 - name: Hadoop cluster provisioning
   hosts: hadoop_all
-  user: user1
+  user: hadoop
   sudo: yes
   roles:
     - hadoop

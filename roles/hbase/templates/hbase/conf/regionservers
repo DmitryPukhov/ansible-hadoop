@@ -1,0 +1,5 @@
+{% for host in groups['hadoop_all'] %}
+{% if "hbase_regionserver" in hostvars[host]["hadoop_type_of_node"] %}
+{{ hostvars[host]['ansible_hostname'] }}
+{% endif %}
+{% endfor %}

@@ -1,5 +1,13 @@
 ---
-hadoop_master: hdp1001
-yarn.resourcemanager.hostname: hdp1001
+
+# Java
 java_package: openjdk-8-jre-headless
 java_home: /usr/lib/jvm/java-8-openjdk-amd64
+
+# Hadoop
+hadoop_master: hdp1001
+hadoop_namenode: hdp1001
+yarn.resourcemanager.hostname: hdp1001
+
+# HBase
+hbase_master: hdp1001

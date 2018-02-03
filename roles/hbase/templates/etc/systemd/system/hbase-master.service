@@ -1,0 +1,13 @@
+[Unit]
+Description=HBase master
+After=network.target
+
+[Service]
+ExecStart={{ hbase_home }}/bin/hbase-daemon.sh start master
+ExecStop={{ hbase_home }}/bin/hbase-daemon.sh stop master
+User={{ hadoop_user }}
+Group={{ hadoop_group }}
+Environment=HBASE_CONF_DIR={{ hbase_home }}/conf
+
+[Install]
+WantedBy=multi-user.target

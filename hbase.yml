@@ -1,0 +1,10 @@
+---
+
+- name: Hbase cluster provisioning
+  hosts: hadoop_all
+  user: ansible
+  sudo: yes
+  roles:
+    - hbase
+
+
