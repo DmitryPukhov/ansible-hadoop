@@ -15,19 +15,6 @@
       - yarn-resourcemanager.service
       - yarn-proxyserver.service
 
-- name: Stop all services
-  service:
-    name: '{{ item }}'
-    enabled: yes
-    state: stopped
-  with_items:
-      - hadoop-datanode
-      - yarn-nodemanager
-      - hadoop-namenode
-      - hadoop-secondarynamenode
-      - yarn-resourcemanager
-      - yarn-proxyserver
-
 - name: Activate name node
   when: "'hadoop_namenode' in group_names"
   service:
