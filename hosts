@@ -22,9 +22,9 @@ hdp1003
 # Zookeeper
 
 [zookeeper]
-hdp1001
-hdp1002
-hdp1003
+hdp1001 zk_myid=1
+hdp1002 zk_myid=2
+hdp1003 zk_myid=3
 
 ##########################
 # Hive

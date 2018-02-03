@@ -34,3 +34,12 @@
     group: '{{ zk_group }}'
   with_fileglob:
     - templates/zookeeper/conf/*
+
+
+- name: Copy zookeeper myid file
+  template:
+    src: 'templates/zookeeper/myid'
+    dest: '/home/{{ zk_user }}/zookeeper/myid'
+    force: yes
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'

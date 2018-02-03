@@ -19,3 +19,8 @@
   with_together:
       - groups.all
       - ansible_all_ipv4_addresses
+
+# Example action to restart service httpd, in all cases
+- service:
+    name: networking
+    state: restarted

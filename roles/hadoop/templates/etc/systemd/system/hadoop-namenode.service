@@ -7,6 +7,7 @@ ExecStart={{ hadoop_home }}/bin/hdfs namenode
 User={{ hadoop_user }}
 Group={{ hadoop_group }}
 Environment=HADOOP_CONF_DIR={{ hadoop_home }}/conf
+Environment=HADOOP_HOME={{ hadoop_home }}
 
 
 [Install]
