@@ -1,4 +1,4 @@
 
-{% for host in groups['hadoop_all'] %}
+{% for host in groups['hadoop_workers'] %}
 {{ hostvars[host]['ansible_hostname'] }}
 {% endfor %}

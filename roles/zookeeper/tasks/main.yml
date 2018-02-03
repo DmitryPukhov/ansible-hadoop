@@ -1,20 +1,19 @@
 ---
 
-
 - name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hadoop
-  register: hadoop_installed
+  stat: path=/opt/zookeeper
+  register: zk_installed
 
-- name: Open hadoop ports
+- name: Open zk ports
   include: open-ports.yml
 
 - name: Download and copy files to destination
   include: download.yml
-  when: not hadoop_installed.stat.exists
-
+  when: not zk_installed.stat.exists
+#
 - name: Configuration changes
   include: configure.yml
-
+#
 - name: Autostart set up
   include: autostart.yml
 

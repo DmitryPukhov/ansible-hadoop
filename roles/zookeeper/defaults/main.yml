@@ -1,0 +1,14 @@
+
+# User for hadoop service
+zk_user: hadoop
+zk_user_pass: 123qwe!@#
+zk_group: hadoop
+
+
+# zookeeper base directory to install the software
+zk_home: /opt/zookeeper
+
+# List of servers to download the hadoop code
+# Zookeeper version to install
+zk_version: 3.4.11
+zk_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/zookeeper/zookeeper-{{ zk_version }}/", "http://mirror.linux-ia64.org/apache/zookeeper/zookeeper-{{ zk_version }}/" ]

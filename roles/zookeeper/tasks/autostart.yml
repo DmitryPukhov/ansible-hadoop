@@ -1,0 +1,16 @@
+---
+
+- name: Copy service files
+  template:
+    src: 'templates/etc/systemd/system/zookeeper.service'
+    dest: '/etc/systemd/system/zookeeper.service'
+    force: true
+    ##mode: 0755
+
+
+- name: Activate zookeeper daemon
+  service:
+    name: 'zookeeper'
+    enabled: yes
+    state: reloaded
+    state: restarted

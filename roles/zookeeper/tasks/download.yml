@@ -1,0 +1,66 @@
+---
+# Create hbase user
+- name: add group
+  group: name={{ zk_group }}
+
+- name: add user
+  user: name={{ zk_user}} group={{ zk_group }} groups=sudo shell=/bin/bash
+
+- name: Apt install {{ item }}
+  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  with_items:
+  - wget
+  - tar
+  - gzip
+  - unzip
+
+- name: install java
+  apt: name={{ java_package }} state=present
+
+- name: download zookeeper
+  get_url:
+    url: '{{ zk_mirrors|random }}/zookeeper-{{ zk_version }}.tar.gz'
+    dest: '{{ zk_home }}-{{ zk_version }}.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+
+- name: extract zk tarball
+  command: '/usr/bin/env tar xf zookeeper-{{ zk_version }}.tar.gz'
+  args:
+    chdir: '{{ zk_home }}/..'
+    creates: '{{ zk_home }}-{{ zk_version }}'
+  sudo: yes
+
+
+- name: chown to zookeeper user
+  file:
+    dest: '{{ zk_home }}-{{ zk_version }}'
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+    recurse: yes
+
+- name: create link to zookeeper
+  file:
+    src: '{{ zk_home }}-{{ zk_version }}'
+    dest: '{{ zk_home }}'
+    state: link
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+
+
+
+- name: Creates directory
+  file:
+    path: '{{ zk_home }}-{{ zk_version }}/logs'
+    state: directory
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+#    mode: 0777
+
+
+

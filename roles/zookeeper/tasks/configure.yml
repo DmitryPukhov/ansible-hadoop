@@ -1,0 +1,36 @@
+---
+
+# Note: Hadoop should already be installed and confugured
+
+- name: set ZOOKEEPER_HOME in .bashrc
+  lineinfile:
+    #dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export ZOOKEEPER_HOME={{ zk_home }}'
+    regexp: '^(# *)?export ZOOKEEPER_HOME='
+
+- name: add PATH to ZOOKEEPER_HOME/bin in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ zk_home }}/bin # ZOOKEEPER-PATH'
+    regexp: '# ZOOKEEPER-PATH'
+
+
+- name: Ensure zookeeper/conf directory exists
+  file:
+    path: '{{ zk_home  }}/conf'
+    state: directory
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+
+
+- name: Copy zookeeper config files
+  template:
+    src: '{{ item }}'
+    dest: '{{ zk_home }}/conf/{{ item | basename }}'
+    force: yes
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+  with_fileglob:
+    - templates/zookeeper/conf/*

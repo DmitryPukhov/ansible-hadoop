@@ -53,24 +53,16 @@
     owner: '{{ hadoop_user }}'
     group: '{{hadoop_group}}'
 
-
 - name: Copy hadoop config files
   template:
-    src: 'templates/hadoop/conf/{{ item }}'
-    dest: '{{ hadoop_home }}/conf/{{ item }}'
+    src: '{{ item }}'
+    dest: '{{ hadoop_home }}/conf/{{ item | basename }}'
     force: yes
     owner: '{{ hadoop_user }}'
     group: '{{ hadoop_group }}'
-  with_items:
-    - hadoop-env.sh
-    - 'yarn-env.sh'
-    - 'core-site.xml'
-    - 'hdfs-site.xml'
-    - 'yarn-site.xml'
-    - 'core-site.xml'
-    - 'capacity-scheduler.xml'
-    - 'workers'
-    - 'log4j.properties'
+  with_fileglob:
+    - templates/hadoop/conf/*
+
 
 - name: delete old hdfs data
   file:

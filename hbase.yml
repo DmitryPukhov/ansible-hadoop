@@ -1,7 +1,7 @@
 ---
 
 - name: Hbase cluster provisioning
-  hosts: hadoop_all
+  hosts: hbase_master|hbase_regionservers
   user: ansible
   sudo: yes
   roles:

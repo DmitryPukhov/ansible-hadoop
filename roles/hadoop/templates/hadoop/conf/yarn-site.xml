@@ -2,11 +2,11 @@
 <configuration>
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>{{ hadoop_master }}</value>
+        <value>{{ groups['hadoop_resourcemanager'][0] }}</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.address</name>
-        <value>{{ hadoop_master }}:8088</value>
+        <value>{{ groups['hadoop_resourcemanager'][0] }}:8088</value>
     </property>
     <property>
         <name>yarn.nodemanager.aux-services</name>
@@ -18,7 +18,7 @@
     </property>
     <property>
         <name>yarn.web-proxy.address</name>
-        <value>{{ hadoop_master }}:8100</value>
+        <value>{{ groups['hadoop_resourcemanager'][0] }}:8100</value>
     </property>
 
     {% for key, value in yarn_props.iteritems() %}

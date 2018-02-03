@@ -6,7 +6,7 @@
 - name: add hbase user
   user: name={{ hbase_user}} group={{ hbase_group }} groups=sudo home={{ hbase_user_home }} shell=/bin/bash
 
-- name: Apt install {{ item }}
+- name: Apt install wget and archivators
   action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
   with_items:
   - wget

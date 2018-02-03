@@ -1,0 +1,16 @@
+[Unit]
+Description=Zookeeper daemon
+After=network.target
+
+[Service]
+WorkingDirectory={{ zk_home }}
+ExecStart={{ zk_home }}/bin/zkServer.sh start
+ExecStop={{ zk_home }}/bin/zkServer.sh stop
+User={{ zk_user }}
+Group={{ zk_group }}
+Environment=ZOO_HOME={{ zk_home }}
+Environment=ZOO_LOG_DIR={{ zk_home }}/logs
+#Environment=ZOO_LOG4J_PROP="INFO,ROLLINGFILE"
+
+[Install]
+WantedBy=multi-user.target

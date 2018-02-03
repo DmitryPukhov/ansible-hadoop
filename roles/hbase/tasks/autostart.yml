@@ -1,5 +1,17 @@
 ---
 
+
+- name: Stop hbase services
+  when: '"hbase_master" in group_names'
+  service:
+    name: '{{ item }}'
+    enabled: yes
+    state: reloaded
+    state: started
+  with_items:
+      - hbase-master
+      - hbase-regionserver
+
 - name: Copy service files
   template:
     src: 'templates/etc/systemd/system/{{ item }}'
@@ -11,8 +23,8 @@
       - hbase-master.service
       - hbase-regionserver.service
 
-- name: Activate master daemons
-  when: '"hbase_master" in hadoop_type_of_node'
+- name: Activate hbase master daemons
+  when: '"hbase_master" in group_names'
   service:
     name: '{{ item }}'
     enabled: yes
@@ -20,15 +32,13 @@
     state: started
   with_items:
       - hbase-master
-      - hbase-regionserver
 
-- name: Activate slave daemons
-  when: '"hbase_regionserver" in hadoop_type_of_node'
+- name: Activate hbase regionservers
+  when: '"hbase_regionserver" in group_names'
   service:
     name: '{{ item }}'
     enabled: yes
     state: reloaded
     state: started
   with_items:
-      - hbase-master
       - hbase-regionserver
