@@ -5,9 +5,10 @@ After=hbase-master.service
 [Service]
 ExecStart={{ hbase_home }}/bin/hbase-daemon.sh start regionserver
 ExecStop={{ hbase_home }}/bin/hbase-daemon.sh stop regionserver
-User={{ hadoop_user }}
-Group={{ hadoop_group }}
+User={{ hbase_user }}
+Group={{ hbase_group }}
 Environment=HBASE_CONF_DIR={{ hbase_home }}/conf
+Environment=JAVA_HOME={{ java_home }}
 
 [Install]
 WantedBy=multi-user.target

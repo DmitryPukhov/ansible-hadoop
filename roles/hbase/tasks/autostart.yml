@@ -1,34 +1,42 @@
 ---
 
-
 - name: Stop hbase services
   when: '"hbase_master" in group_names'
   service:
     name: '{{ item }}'
-    enabled: yes
-    state: reloaded
-    state: started
+    enabled: false
+    state: stopped
   with_items:
       - hbase-master
       - hbase-regionserver
+
 
 - name: Copy service files
   template:
     src: 'templates/etc/systemd/system/{{ item }}'
     dest: '/etc/systemd/system/{{ item }}'
-    sudo: yes
+#    sudo: yes
     force: true
     ##mode: 0755
   with_items:
       - hbase-master.service
       - hbase-regionserver.service
 
-- name: Activate hbase master daemons
+- name: Reload hbase services
   when: '"hbase_master" in group_names'
   service:
     name: '{{ item }}'
     enabled: yes
     state: reloaded
+  with_items:
+      - hbase-master
+      - hbase-regionserver
+
+- name: Activate hbase master daemons
+  when: '"hbase_master" in group_names'
+  service:
+    name: '{{ item }}'
+    enabled: yes
     state: started
   with_items:
       - hbase-master
@@ -38,7 +46,6 @@
   service:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
     state: started
   with_items:
       - hbase-regionserver

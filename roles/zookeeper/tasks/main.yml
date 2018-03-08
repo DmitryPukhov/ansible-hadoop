@@ -9,23 +9,17 @@
   include: download.yml
   when: not zk_installed.stat.exists
 
-- name: Add a fast check to speed reconfiguration
-  stat: path=/opt/zookeeper
-  register: zk_installed
-
-
 - name: Open zk ports
   include: open-ports.yml
-  when: zk_installed.stat.exists
 
 
 - name: Configuration changes
   include: configure.yml
-  when: zk_installed.stat.exists
+#  when: zk_installed.stat.exists
 
 #
 - name: Autostart set up
   include: autostart.yml
-  when: zk_installed.stat.exists
+#  when: zk_installed.stat.exists
 
 

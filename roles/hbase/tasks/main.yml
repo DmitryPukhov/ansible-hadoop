@@ -15,6 +15,6 @@
   include: configure.yml
 
 # ToDo: set up zookeeper first
-#- name: Autostart set up
-#  include: autostart.yml
+- name: Autostart set up
+  include: autostart.yml
 

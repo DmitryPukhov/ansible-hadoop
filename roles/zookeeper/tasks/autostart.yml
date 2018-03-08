@@ -6,11 +6,16 @@
     dest: '/etc/systemd/system/zookeeper.service'
     force: true
     ##mode: 0755
-
-
-- name: Activate zookeeper daemon
-  service:
+- name: Restart zookeeper daemon
+  systemd:
     name: 'zookeeper'
     enabled: yes
-    state: reloaded
     state: restarted
+    daemon_reload: yes
+
+#- name: Restart zookeeper daemon
+#  systemd:
+#    name: zookeeper
+#    enabled: yes
+#    state: restarted
+#    daemon_reload: true
