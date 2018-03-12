@@ -3,6 +3,8 @@ Description=Zookeeper daemon
 After=network.target
 
 [Service]
+Type=forking
+SyslogIdentifier=zookeeper
 WorkingDirectory={{ zk_home }}
 ExecStart={{ zk_home }}/bin/zkServer.sh start
 ExecStop={{ zk_home }}/bin/zkServer.sh stop
@@ -10,7 +12,7 @@ User={{ zk_user }}
 Group={{ zk_group }}
 Environment=ZOO_HOME={{ zk_home }}
 Environment=ZOO_LOG_DIR={{ zk_home }}/logs
-Environment=ZOO_LOG4J_PROP="DEBUG,CONSOLE,ROLLINGFILE"
+#Environment=ZOO_LOG4J_PROP="TRACE,CONSOLE,ROLLINGFILE"
 
 [Install]
 WantedBy=multi-user.target

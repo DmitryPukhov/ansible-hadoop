@@ -35,11 +35,24 @@
   with_fileglob:
     - templates/zookeeper/conf/*
 
+- name: Remove old zookeeper data directory exists
+  file:
+    path: '{{ zk_data_dir }}'
+    state: absent
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
+
+- name: Ensure zookeeper data directory exists
+  file:
+    path: '{{ zk_data_dir }}'
+    state: directory
+    owner: '{{ zk_user }}'
+    group: '{{ zk_group }}'
 
 - name: Copy zookeeper myid file
   template:
     src: 'templates/zookeeper/myid'
-    dest: '/home/{{ zk_user }}/zookeeper/myid'
+    dest: '{{ zk_data_dir }}/myid'
     force: yes
     owner: '{{ zk_user }}'
     group: '{{ zk_group }}'

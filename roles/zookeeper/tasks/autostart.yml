@@ -6,6 +6,7 @@
     dest: '/etc/systemd/system/zookeeper.service'
     force: true
     ##mode: 0755
+
 - name: Restart zookeeper daemon
   systemd:
     name: 'zookeeper'
