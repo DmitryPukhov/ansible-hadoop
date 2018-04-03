@@ -17,7 +17,7 @@
     </property>
     <property>
         <name>hbase.rootdir</name>
-        <value>{{ hbase_root_dir }}/hbase</value>
+        <value>{{ hbase_root_dir }}</value>
         <description>The directory shared by RegionServers.
         </description>
     </property>

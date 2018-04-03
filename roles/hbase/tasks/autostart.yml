@@ -33,7 +33,7 @@
       - hbase-master
 
 - name: Activate hbase regionservers
-  when: '"hbase_regionserver" in group_names'
+  when: '"hbase_regionservers" in group_names'
   systemd:
     name: '{{ item }}'
     enabled: yes
