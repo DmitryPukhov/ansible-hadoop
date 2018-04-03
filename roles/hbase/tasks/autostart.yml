@@ -22,30 +22,22 @@
       - hbase-master.service
       - hbase-regionserver.service
 
-- name: Reload hbase services
-  when: '"hbase_master" in group_names'
-  service:
-    name: '{{ item }}'
-    enabled: yes
-    state: reloaded
-  with_items:
-      - hbase-master
-      - hbase-regionserver
-
 - name: Activate hbase master daemons
   when: '"hbase_master" in group_names'
-  service:
+  systemd:
     name: '{{ item }}'
     enabled: yes
-    state: started
+    state: restarted
+    daemon_reload: yes
   with_items:
       - hbase-master
 
 - name: Activate hbase regionservers
   when: '"hbase_regionserver" in group_names'
-  service:
+  systemd:
     name: '{{ item }}'
     enabled: yes
-    state: started
+    state: restarted
+    daemon_reload: yes
   with_items:
       - hbase-regionserver

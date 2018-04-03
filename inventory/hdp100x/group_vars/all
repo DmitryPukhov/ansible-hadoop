@@ -1,0 +1,45 @@
+---
+hadoop_master: hdp1001
+yarn.resourcemanager.hostname: hdp1001
+java_package: openjdk-8-jre-headless
+java_home: /usr/lib/jvm/java-8-openjdk-amd64
+
+
+# User for hadoop service
+zk_user: hadoop
+zk_user_pass: 123qwe!@#
+zk_group: hadoop
+
+# zookeeper base directory to install the software
+zk_home: /opt/zookeeper
+#zk_data_dir: /home/{{ zk_user }}/zookeeper
+zk_data_dir: /tmp/zookeeper
+
+# List of servers to download the hadoop code
+# Zookeeper version to install
+zk_version: 3.4.11
+zk_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/zookeeper/zookeeper-{{ zk_version }}/", "http://mirror.linux-ia64.org/apache/zookeeper/zookeeper-{{ zk_version }}/" ]
+
+
+
+# User for hadoop service
+hbase_user: hadoop
+hbase_user_pass: 123qwe!@#
+hbase_group: hadoop
+hbase_user_home: /home/hadoop
+hbase_tmp_dir: "{{ hbase_user_home }}/tmp"
+
+# The type of the node: slave / master / resourcemanager / nodemanager / datanode / namenode
+hbase_type_of_node: slave
+# Hadoop base directory to install the software
+hbase_home: /opt/hbase
+# List of servers to download the hadoop code
+hbase_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hbase/", "http://mirror.linux-ia64.org/apache/hbase/" ]
+# Hbase version to install
+hbase_version: 1.1.4
+
+
+# A dictionary with a set of properties to set in the core-site.xml
+hdfs_props: {}
+# A dictionary with a set of properties to set in the yarn-site.xml
+yarn_props: {}
