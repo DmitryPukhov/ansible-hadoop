@@ -11,6 +11,11 @@ hdp1002
 hdp1003
 ##########################
 # HBase
+
+[hbase:children]
+hbase_master
+hbase_regionservers
+
 [hbase_master]
 hdp1001
 

@@ -11,3 +11,6 @@ java_home: /usr/lib/jvm/java-8-openjdk-amd64
 hdfs_props: {}
 # A dictionary with a set of properties to set in the yarn-site.xml
 yarn_props: {}
+
+hadoop_home: /opt/hadoop
+hdfs_root_dir: hdfs://hdp1001:9000

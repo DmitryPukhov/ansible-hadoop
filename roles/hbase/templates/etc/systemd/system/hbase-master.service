@@ -3,6 +3,7 @@ Description=HBase master
 After=network.target
 
 [Service]
+Type=forking
 ExecStart={{ hbase_home }}/bin/hbase-daemon.sh start master
 ExecStop={{ hbase_home }}/bin/hbase-daemon.sh stop master
 User={{ hbase_user }}
