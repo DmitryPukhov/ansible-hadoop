@@ -1,4 +1,4 @@
-
+---
 # User for hadoop service
 zk_user: hadoop
 zk_user_pass: 123qwe!@#

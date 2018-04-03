@@ -2,7 +2,7 @@
 
 
 - name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hadoop
+  stat: path=/opt/hadoop-{{ hadoop_version }}
   register: hadoop_installed
 
 - name: Download and copy files to destination
@@ -11,7 +11,7 @@
 
 
 - name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hadoop
+  stat: path=/opt/hadoop-{{ hadoop_version }}
   register: hadoop_installed
 
 - name: Open hadoop ports

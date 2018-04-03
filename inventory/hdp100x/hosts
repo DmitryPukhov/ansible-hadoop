@@ -1,5 +1,10 @@
 ##########################
 # Hadoop nodes
+[hadoop:children]
+hadoop_namenode
+hadoop_resourcemanager
+hadoop_workers
+
 [hadoop_namenode]
 hdp1001
 
@@ -9,6 +14,7 @@ hdp1001
 [hadoop_workers]
 hdp1002
 hdp1003
+hdp1004
 ##########################
 # HBase
 
@@ -22,6 +28,7 @@ hdp1001
 [hbase_regionservers]
 hdp1002
 hdp1003
+hdp1004
 
 ##########################
 # Zookeeper
@@ -30,6 +37,7 @@ hdp1003
 hdp1001 zk_myid=1
 hdp1002 zk_myid=2
 hdp1003 zk_myid=3
+hdp1004 zk_myid=4
 
 ##########################
 # Hive

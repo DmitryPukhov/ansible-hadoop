@@ -1,3 +1,4 @@
+---
 hadoop_user: hadoop
 hadoop_user_pass: 123qwe!@#
 hadoop_group: hadoop
@@ -10,9 +11,11 @@ hadoop_type_of_node: slave
 # Hadoop base directory to install the software
 
 # List of servers to download the hadoop code
-hadoop_mirrors: [ "http://mirror.cc.columbia.edu/pub/software/apache/hadoop/core/hadoop-3.0.0", "http://ftp.osuosl.org/pub/apache/hadoop/core/hadoop-3.0.0", "http://apache.rediris.es/hadoop/core/hadoop-3.0.0", "http://www-eu.apache.org/dist/hadoop/common/hadoop-3.0.0" ]
+hadoop_version: "3.0.1"
+hadoop_mirrors: [ "http://mirror.cc.columbia.edu/pub/software/apache/hadoop/core/hadoop-{{ hadoop_version }}", "http://ftp.osuosl.org/pub/apache/hadoop/core/hadoop-3.0.0", "http://apache.rediris.es/hadoop/core/hadoop-{{ hadoop_version }}", "http://www-eu.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}" ]
+
 # Hadoop version to install
-hadoop_version: 3.0.0
+
 
 
 # A dictionary with a set of properties to set in the core-site.xml
