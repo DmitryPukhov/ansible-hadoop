@@ -15,6 +15,6 @@ hbase_type_of_node: slave
 #hbase_home: "/opt/hbase"
 
 # List of servers to download the hadoop code
-hbase_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hbase/", "http://mirror.linux-ia64.org/apache/hbase/" ]
+hbase_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}-bin.tar.gz", "http://mirror.linux-ia64.org/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}-bin.tar.gz" ]
 # Hbase version to install
-hbase_version: 1.1.4
+hbase_version: 1.2.6
