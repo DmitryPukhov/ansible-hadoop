@@ -1,0 +1,42 @@
+---
+
+#- name: Stop spark services
+#  when: '"spark" in group_names'
+#  service:
+#    name: '{{ item }}'
+#    enabled: false
+#    state: stopped
+#  with_items:
+#      - spark-master
+#      - hbase-regionserver
+
+
+- name: Copy service files
+  template:
+    src: '{{ item }}'
+    dest: '/etc/systemd/system/{{ item | basename }}'
+#    sudo: yes
+    force: true
+    ##mode: 0755
+  with_fileglob:
+      - templates/etc/systemd/system/*
+
+- name: Activate spark master daemon
+  when: '"spark_master" in group_names'
+  systemd:
+    name: '{{ item }}'
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+  with_items:
+      - spark-master
+
+- name: Activate spark workers
+  when: '"spark_workers" in group_names'
+  systemd:
+    name: '{{ item }}'
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+  with_items:
+      - spark-worker

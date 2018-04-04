@@ -1,0 +1,10 @@
+---
+
+- name: Spark cluster provisioning
+  hosts: spark
+  user: ansible
+  sudo: yes
+  roles:
+    - spark
+
+

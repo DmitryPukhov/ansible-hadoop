@@ -6,7 +6,6 @@ java_home: /usr/lib/jvm/java-8-openjdk-amd64
 
 
 
-
 # A dictionary with a set of properties to set in the core-site.xml
 hdfs_props: {}
 # A dictionary with a set of properties to set in the yarn-site.xml

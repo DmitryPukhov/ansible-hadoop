@@ -1,0 +1,18 @@
+---
+
+- name: Open spark ports
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
+  ignore_errors: no
+  with_items:
+  - 8080 # Standalone master Web UI
+  - 8081 # Standalone worker Web UI
+  - 7077 # Standalone master
+  - 4040 # Cluster web ui
+  - 18080 # History server
+
+- name: Open all ports from ip {{ item.1 }} in the firewall
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp source {{ item.1 }}
+  ignore_errors: yes
+  with_together:
+      - groups.all
+      - ansible_all_ipv4_addresses

@@ -1,0 +1,14 @@
+[Unit]
+Description=Spark slave
+After=spark-master.service
+
+[Service]
+ExecStart={{ spark_home }}/bin/start-slave.sh
+ExecStop={{ spark_home }}/bin/stop-slave.sh
+User={{ spark_user }}
+Group={{ spark_group }}
+Environment=SPARK_HOME={{ spark_home }}
+Environment=JAVA_HOME={{ java_home }}
+
+[Install]
+WantedBy=multi-user.target

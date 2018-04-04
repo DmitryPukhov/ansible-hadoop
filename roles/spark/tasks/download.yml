@@ -1,0 +1,65 @@
+---
+# Create hbase user
+- name: add spark group
+  group: name={{ spark_group }}
+
+- name: add spark user
+  user: name={{ spark_user}} group={{ spark_group }} groups=sudo home={{ spark_user_home }} shell=/bin/bash
+
+- name: Apt install wget and archivators
+  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  with_items:
+  - wget
+  - tar
+  - gzip
+  - unzip
+
+- name: install java
+  apt: name={{ java_package }} state=present
+
+- name: download spark
+  get_url:
+    url: '{{ spark_mirrors|random }}'
+    dest: '{{ spark_home }}-{{ spark_version }}.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+
+- name: extract spark tarball
+  command: '/usr/bin/env tar xf spark-{{ spark_version }}.tar.gz'
+  args:
+    chdir: '{{ spark_home }}/..'
+    creates: '{{ spark_home }}/spark-{{ spark_version }}'
+  sudo: yes
+
+
+- name: chown to spark user
+  file:
+    dest: '{{ spark_home }}-{{ spark_version }}'
+    owner: '{{ spark_user }}'
+    group: '{{ spark_group }}'
+    recurse: yes
+
+- name: create link to spark
+  file:
+    src: '{{ spark_home }}-{{ spark_version }}'
+    dest: '{{ spark_home }}'
+    state: link
+    force: yes
+    owner: '{{ spark_user }}'
+    group: '{{ spark_group }}'
+
+#- name: Creates directory
+#  file:
+#    path: '{{ hbase_home }}-{{ hbase_version }}/logs'
+#    state: directory
+#    owner: '{{ hbase_user }}'
+#    group: '{{ hbase_group }}'
+#    mode: 0777
+
+
+

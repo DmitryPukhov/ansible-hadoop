@@ -50,3 +50,21 @@ hdp1006 zk_myid=6
 [tez_master]
 hdp1001
 
+
+##########################
+# Spark
+[spark:children]
+spark_master
+spark_workers
+
+[spark_master]
+hdp1001
+
+[spark_workers]
+hdp1002
+hdp1003
+hdp1004
+hdp1005
+hdp1006
+
+

@@ -1,0 +1,36 @@
+---
+
+# Note: Hadoop should already be installed and confugured
+
+- name: set spark home in .bashrc
+  lineinfile:
+    #dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: "export SPARK_HOME={{ spark_home }}"
+    regexp: '^(# *)?export SPARK_HOME='
+
+- name: add PATH to SPARK_HOME/bin in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ spark_home }}/bin # SPARK-BIN-PATH'
+    regexp: '# SPARK-BIN-PATH'
+
+
+- name: Ensure spark/conf directory exists
+  file:
+    path: '{{ spark_home }}/conf'
+    state: directory
+    owner: '{{ spark_user }}'
+    group: '{{ spark_group }}'
+
+
+- name: Copy spark config files
+  template:
+    src: '{{ item }}'
+    dest: '{{ spark_home }}/conf/{{ item | basename }}'
+    force: yes
+    owner: '{{ spark_user }}'
+    group: '{{ spark_group }}'
+  with_fileglob:
+    - templates/spark/conf/*
