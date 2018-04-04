@@ -12,7 +12,7 @@ hadoop_type_of_node: slave
 
 # List of servers to download the hadoop code
 hadoop_version: "3.0.1"
-hadoop_mirrors: [ "http://mirror.cc.columbia.edu/pub/software/apache/hadoop/core/hadoop-{{ hadoop_version }}", "http://ftp.osuosl.org/pub/apache/hadoop/core/hadoop-3.0.0", "http://apache.rediris.es/hadoop/core/hadoop-{{ hadoop_version }}", "http://www-eu.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}" ]
+hadoop_mirrors: [ "http://mirror.cc.columbia.edu/pub/software/apache/hadoop/core/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz", "http://ftp.osuosl.org/pub/apache/hadoop/core/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz", "http://apache.rediris.es/hadoop/core/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz", "http://www-eu.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz" ]
 
 # Hadoop version to install
 

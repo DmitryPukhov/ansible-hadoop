@@ -15,6 +15,8 @@ hdp1001
 hdp1002
 hdp1003
 hdp1004
+hdp1005
+hdp1006
 ##########################
 # HBase
 
@@ -29,6 +31,8 @@ hdp1001
 hdp1002
 hdp1003
 hdp1004
+hdp1005
+hdp1006
 
 ##########################
 # Zookeeper
@@ -38,6 +42,8 @@ hdp1001 zk_myid=1
 hdp1002 zk_myid=2
 hdp1003 zk_myid=3
 hdp1004 zk_myid=4
+hdp1005 zk_myid=5
+hdp1006 zk_myid=6
 
 ##########################
 # Hive

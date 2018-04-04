@@ -19,7 +19,7 @@
 
 - name: download hadoop
   get_url:
-    url: '{{ hadoop_mirrors|random }}/hadoop-{{ hadoop_version }}.tar.gz'
+    url: '{{ hadoop_mirrors|random }}'
     dest: '{{ hadoop_home }}-{{ hadoop_version }}.tar.gz'
     force: no
   register: result
