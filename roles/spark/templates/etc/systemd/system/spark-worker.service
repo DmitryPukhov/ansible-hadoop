@@ -3,8 +3,9 @@ Description=Spark slave
 After=spark-master.service
 
 [Service]
-ExecStart={{ spark_home }}/bin/start-slave.sh
-ExecStop={{ spark_home }}/bin/stop-slave.sh
+Type=forking
+ExecStart={{ spark_home }}/sbin/start-slave.sh spark://{{ spark_master }}:7077
+ExecStop={{ spark_home }}/sbin/stop-slave.sh
 User={{ spark_user }}
 Group={{ spark_group }}
 Environment=SPARK_HOME={{ spark_home }}

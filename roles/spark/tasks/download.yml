@@ -33,33 +33,33 @@
   command: '/usr/bin/env tar xf spark-{{ spark_version }}.tar.gz'
   args:
     chdir: '{{ spark_home }}/..'
-    creates: '{{ spark_home }}/spark-{{ spark_version }}'
+    creates: '{{ spark_install_dir }}'
   sudo: yes
 
 
 - name: chown to spark user
   file:
-    dest: '{{ spark_home }}-{{ spark_version }}'
+    dest: '{{ spark_install_dir }}'
     owner: '{{ spark_user }}'
     group: '{{ spark_group }}'
     recurse: yes
 
 - name: create link to spark
   file:
-    src: '{{ spark_home }}-{{ spark_version }}'
+    src: '{{ spark_install_dir }}'
     dest: '{{ spark_home }}'
     state: link
     force: yes
     owner: '{{ spark_user }}'
     group: '{{ spark_group }}'
 
-#- name: Creates directory
-#  file:
-#    path: '{{ hbase_home }}-{{ hbase_version }}/logs'
-#    state: directory
-#    owner: '{{ hbase_user }}'
-#    group: '{{ hbase_group }}'
-#    mode: 0777
+- name: Creates directory
+  file:
+    path: '{{ spark_install_dir }}/logs'
+    state: directory
+    owner: '{{ spark_user }}'
+    group: '{{ spark_group }}'
+    mode: 0777
 
 
 

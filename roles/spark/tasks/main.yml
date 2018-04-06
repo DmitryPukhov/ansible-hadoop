@@ -9,29 +9,20 @@
   include: download.yml
   #when: not spark_installed.stat.exists
 
-- name: Remove symlink
-  file:
-   path: "{{ spark_home }}"
-   state: absent
+#- name: Remove symlink
+#  file:
+#   path: "{{ spark_home }}"
+#   state: absent
+#
+#- name: create link to spark
+#  file:
+#    src: '{{ spark_install_dir }}'
+#    dest: '{{ spark_home }}'
+#    state: link
+#    force: yes
+#    owner: '{{ spark_user }}'
+#    group: '{{ spark_group }}'
 
-- name: create link to spark
-  file:
-    src: '{{ spark_home }}-{{ spark_version }}'
-    dest: '{{ spark_home }}'
-    state: link
-    force: yes
-    owner: '{{ spark_user }}'
-    group: '{{ spark_group }}'
-
-
-- name: create link to spark
-  file:
-    src: '{{ spark_home }}-{{ spark_version }}'
-    dest: '{{ spark_home }}'
-    state: link
-    force: yes
-    owner: '{{ spark_user }}'
-    group: '{{ spark_group }}'
 
 - name: Open spark ports
   include: open-ports.yml

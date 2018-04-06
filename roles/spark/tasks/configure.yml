@@ -17,12 +17,12 @@
     regexp: '# SPARK-BIN-PATH'
 
 
-- name: Ensure spark/conf directory exists
-  file:
-    path: '{{ spark_home }}/conf'
-    state: directory
-    owner: '{{ spark_user }}'
-    group: '{{ spark_group }}'
+#- name: Ensure spark/conf directory exists
+#  file:
+#    path: '{{ spark_home }}/conf'
+#    state: directory
+#    owner: '{{ spark_user }}'
+#    group: '{{ spark_group }}'
 
 
 - name: Copy spark config files
