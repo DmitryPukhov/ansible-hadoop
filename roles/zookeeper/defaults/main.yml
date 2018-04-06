@@ -7,8 +7,8 @@ zk_group: hadoop
 
 # zookeeper base directory to install the software
 zk_home: /opt/zookeeper
-#zk_data_dir: /home/{{ zk_user }}/zookeeper
-zk_data_dir: /tmp/zookeeper
+zk_data_dir: /home/{{ zk_user }}/zookeeper
+#zk_data_dir: /tmp/zookeeper
 
 # List of servers to download the hadoop code
 # Zookeeper version to install
