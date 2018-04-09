@@ -49,6 +49,8 @@ hdp1006 zk_myid=6
 # Hive
 [tez_master]
 hdp1001
+[hive_master]
+hdp1001
 
 
 ##########################

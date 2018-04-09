@@ -511,7 +511,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:postgresql://{{ hadoop_master }}:5432/hive_metastore</value>
+    <value>jdbc:postgresql://{{ groups['hive_master'][0] }}:5432/hive_metastore</value>
     <description>
       JDBC connect string for a JDBC metastore.
       To use SSL to encrypt/authenticate the connection, provide database-specific SSL flag in the connection URL.

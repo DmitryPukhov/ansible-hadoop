@@ -2,8 +2,8 @@
 # Only copy files, do not start services.
 
 - name: Install hive
-  hosts: hadoop_master
-  user: user1
+  hosts: hive_master
+  user: ansible
   sudo: yes
   roles:
    - hive

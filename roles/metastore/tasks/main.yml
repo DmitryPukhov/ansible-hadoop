@@ -1,4 +1,8 @@
 ---
+
+- name: Install postgresql
+  include: postgresql.yml
+
 - name: Drop old metastore
   include: drop_metastore.yml
 

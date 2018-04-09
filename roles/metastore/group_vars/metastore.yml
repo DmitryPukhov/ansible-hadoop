@@ -44,7 +44,7 @@ postgresql_user_privileges:
     db: hive_metastore                  # database
     priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
     role_attr_flags: "CREATEDB" # role attribute flags
-  - name: user1                   # user name
-    db: foobar                  # database
-    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
-    role_attr_flags: "CREATEDB" # role attribute flags
+#  - name: user1                   # user name
+#    db: foobar                  # database
+#    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+#    role_attr_flags: "CREATEDB" # role attribute flags
