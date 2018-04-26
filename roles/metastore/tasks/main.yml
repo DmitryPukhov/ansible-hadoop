@@ -5,6 +5,7 @@
 
 - name: Drop old metastore
   include: drop_metastore.yml
+  ignore_errors: yes
 
 - name: Create new metastore
   include: create_metastore.yml

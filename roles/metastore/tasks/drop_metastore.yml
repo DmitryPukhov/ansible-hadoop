@@ -5,17 +5,18 @@
     enabled: yes
     state: stopped
 
+
 - name: Stop postgresql
   service:
     name: postgresql
     enabled: yes
-    state: stopped
+    state: restarted
 
-- name: Start postgresql
-  service:
-    name: postgresql
-    enabled: yes
-    state: started
+#- name: Start postgresql
+#  service:
+#    name: postgresql
+#    enabled: yes
+#    state: started
 
 
 - name: Remove old metastore db
