@@ -5,6 +5,7 @@ hadoop_user_pass: 123qwe!@#
 hadoop_group: hadoop
 hadoop_user_home: /home/hadoop
 hadoop_tmp_dir: /home/hadoop/tmp
+hadoop_log_dir: /opt/hadoop/logs
 
 # The type of the node: slave / master / resourcemanager / nodemanager / datanode / namenode
 hadoop_type_of_node: slave

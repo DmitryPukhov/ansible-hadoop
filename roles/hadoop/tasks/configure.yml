@@ -64,6 +64,14 @@
     - templates/hadoop/conf/*
 
 
+- name: Ensure hadoop/logs directory exists
+  file:
+    path: '{{hadoop_log_dir}}'
+    state: directory
+    force: yes
+    owner: '{{ hadoop_user }}'
+    group: '{{hadoop_group}}'
+
 - name: delete old hdfs data
   file:
     path: '/home/{{ hadoop_user }}/data/hdfs'
@@ -82,6 +90,13 @@
 - name: chown to hadoop user
   file:
     dest: '/home/{{ hadoop_user }}/data'
+    owner: '{{ hadoop_user }}'
+    group: '{{ hadoop_group }}'
+    recurse: yes
+
+- name: chown to hadoop user
+  file:
+    dest: '/home/{{ hadoop_home }}'
     owner: '{{ hadoop_user }}'
     group: '{{ hadoop_group }}'
     recurse: yes
