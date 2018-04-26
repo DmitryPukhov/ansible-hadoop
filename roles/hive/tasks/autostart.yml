@@ -14,8 +14,7 @@
   service:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
+    state: daemon_reload
     state: started
-    force: true
   with_items:
       - hiveserver2
