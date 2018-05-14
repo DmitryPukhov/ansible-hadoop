@@ -27,8 +27,8 @@
   systemd:
     name: '{{ item }}'
     enabled: yes
+    state: reloaded
     state: restarted
-    daemon_reload: yes
   with_items:
       - hbase-master
 
@@ -37,7 +37,7 @@
   systemd:
     name: '{{ item }}'
     enabled: yes
+    state: reloaded
     state: restarted
-    daemon_reload: yes
   with_items:
       - hbase-regionserver
