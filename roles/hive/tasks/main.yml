@@ -4,7 +4,7 @@
 #####################################################################
 
 - name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hive
+  stat: path={{ hive_home }}-apache-hive-{{ hive_version }}-bin
   register: hive_installed
 
 

@@ -6,4 +6,4 @@
   user: ansible
   sudo: yes
   roles:
-   - hive
+    - hive

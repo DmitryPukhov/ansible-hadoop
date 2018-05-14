@@ -12,7 +12,8 @@
 
 - name: unpack Hive
   sudo: yes
-  command: bash -c "cd /opt && tar xzf {{ hive_home }}-apache-hive-{{ hive_version }}-bin.tar.gz" creates={{ hive_home }}-apache-hive-{{ hive_version }}
+  command: bash -c "cd /opt && tar xzf {{ hive_home }}-apache-hive-{{ hive_version }}-bin.tar.gz"
+  #creates={{ hive_home }}-apache-hive-{{ hive_version }}
 
 - name: make a link /opt/hive
   file: state=link src=/opt/apache-hive-{{ hive_version }}-bin dest={{ hive_home }}

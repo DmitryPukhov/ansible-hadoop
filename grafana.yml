@@ -1,0 +1,9 @@
+---
+
+- name: "Install collectd"
+  hosts: grafana
+  sudo: yes
+  vars:
+    collectd_d_config_dir: /etc/collectd
+  roles:
+    - AerisCloud.collectd

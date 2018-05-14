@@ -5,7 +5,7 @@ hive_home: /opt/hive
 hadoop_home: /opt/hadoop
 hive_log_dir: /opt/hive/logs
 
-hive_version: 2.1.1
+hive_version: 2.3.3
 hive_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hive/hive-{{ hive_version }}"]
 
 hive_var_prefix: /var/lib/hive

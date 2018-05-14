@@ -69,4 +69,10 @@ hdp1004
 hdp1005
 hdp1006
 
+#####################
+# Monitoring
+[grafana]
+hdp1001
+#hdp1002
+
 
