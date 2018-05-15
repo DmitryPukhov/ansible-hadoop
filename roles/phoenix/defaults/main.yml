@@ -1,0 +1,12 @@
+---
+
+#java_home: /usr/java/jdk1.8.0_92
+all_home: /opt
+phoenix_home: /opt/phoenix
+phoenix_version: 4.13.1
+phoenix_hbase_version: 1.3
+phoenix_name: apache-phoenix-{{ phoenix_version }}-HBase-{{ phoenix_hbase_version }}-bin
+phoenix_mirrors: [ "http://mirror.linux-ia64.org/apache/phoenix/{{ phoenix_name }}/{{ phoenix_name}}.tar.gz"]
+
+phoenix_user: hadoop
+phoenix_group: hadoop

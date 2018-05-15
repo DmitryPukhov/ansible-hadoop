@@ -1,0 +1,15 @@
+---
+
+
+- name: add phoenix home to PATH in .bashrc
+  lineinfile:
+#    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ phoenix_home }} # PHOENIX-PATH'
+    regexp: '# PHOENIX-PATH'
+
+- name: copy phoenix jars to hive lib
+  shell: "cp {{ phoenix_home }}/phoenix-{{ phoenix_version }}-HBase-{{ phoenix_hbase_version }}-server.jar {{ hive_home }}/lib/"
+
+
+

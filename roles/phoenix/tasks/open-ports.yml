@@ -1,0 +1,8 @@
+---
+
+- name: Open phoenix ports
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
+  ignore_errors: yes
+  with_items:
+  - 8765
+

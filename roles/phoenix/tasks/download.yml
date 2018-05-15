@@ -1,0 +1,25 @@
+---
+- name: download phoenix
+  get_url:
+    url: '{{ phoenix_mirrors|random }}'
+    dest: '{{ all_home }}/{{ phoenix_name }}.tar.gz'
+    force: no
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+  sudo: yes
+
+- name: unpack Phoenix
+  sudo: yes
+  command: bash -c "cd {{ all_home }} && tar xf {{ phoenix_name }}.tar.gz"
+
+- name: make a link /opt/phoenix
+  file: state=link src={{ phoenix_name }} dest={{ phoenix_home }}
+
+- name: chown hive folder owner to phoenix user
+  file:
+    path: '{{ all_home }}/{{ phoenix_name }}'
+    owner: '{{ phoenix_user }}'
+    group: '{{ phoenix_group }}'
+    recurse: yes

@@ -27,6 +27,9 @@ hbase_regionservers
 [hbase_master]
 hdp1001
 
+[phoenix]
+hdp1001
+
 [hbase_regionservers]
 hdp1002
 hdp1003

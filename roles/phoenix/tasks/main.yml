@@ -1,0 +1,22 @@
+---
+############# In hive role only copy hive and configs, do not start any services
+# Services will be started later, when tez and llap are configured
+#####################################################################
+
+- name: Add a fast check to speed reconfiguration
+  stat: path={{ all_home }}/{{ phoenix_name }}
+  register: phoenix_installed
+
+
+- name: Download and copy to /opt/phoenix
+  include: download.yml
+
+- name: Open phoenix ports
+  include: open-ports.yml
+
+- name: Copy configs and
+  include: configure.yml
+
+
+
+

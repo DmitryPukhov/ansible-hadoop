@@ -1,0 +1,10 @@
+---
+
+- name: Phoenix provisioning
+  hosts: phoenix
+  user: ansible
+  sudo: yes
+  roles:
+    - phoenix
+
+
