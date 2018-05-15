@@ -8,8 +8,8 @@
     line: 'export PATH=$PATH:{{ phoenix_home }} # PHOENIX-PATH'
     regexp: '# PHOENIX-PATH'
 
-- name: copy phoenix jars to hive lib
-  shell: "cp {{ phoenix_home }}/phoenix-{{ phoenix_version }}-HBase-{{ phoenix_hbase_version }}-server.jar {{ hive_home }}/lib/"
+- name: copy phoenix jars to hbase lib
+  shell: "cp {{ phoenix_home }}/phoenix-{{ phoenix_version }}-HBase-{{ phoenix_hbase_version }}-server.jar {{ hbase_home }}/lib/"
 
 
 

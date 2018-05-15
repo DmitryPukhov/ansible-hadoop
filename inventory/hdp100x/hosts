@@ -29,6 +29,11 @@ hdp1001
 
 [phoenix]
 hdp1001
+hdp1002
+hdp1003
+hdp1004
+hdp1005
+hdp1006
 
 [hbase_regionservers]
 hdp1002

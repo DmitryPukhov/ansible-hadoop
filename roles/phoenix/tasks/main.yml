@@ -10,6 +10,7 @@
 
 - name: Download and copy to /opt/phoenix
   include: download.yml
+  when: not phoenix_installed.stat.exists
 
 - name: Open phoenix ports
   include: open-ports.yml
