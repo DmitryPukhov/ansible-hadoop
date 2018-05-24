@@ -1,6 +1,7 @@
 ---
 
 - name: Copy service files
+
   template:
     src: 'templates/etc/systemd/system/{{ item }}'
     dest: '/etc/systemd/system/{{ item }}'
@@ -11,6 +12,7 @@
       - hiveserver2.service
 
 - name: Activate daemons
+  when: '"hive_master" in group_names'
   service:
     name: '{{ item }}'
     enabled: yes
