@@ -29,5 +29,13 @@
             true: fully-distributed with unmanaged Zookeeper Quorum (see hbase-env.sh)
         </description>
     </property>
+    <property>
+        <name>hbase.regionserver.wal.codec</name>
+        <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+    </property>
+    <property>
+        <name>phoenix.query.maxGlobalMemoryPercentage</name>
+        <value>50</value>
+    </property>
 </configuration>
 
