@@ -18,3 +18,10 @@
     dest: '/etc/bash.bashrc'
     line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:{{ tez_home }}/conf:{{ tez_home }}/lib/*:{{ tez_home }}/lib/* # TEZ_HADOOP_CLASSPATH'
     regexp: '# TEZ_HADOOP_CLASSPATH'
+
+- name: add PATH to tez/lib in .bashrc
+  lineinfile:
+    #    dest: '{{ hadoop_user_home }}/.bashrc'
+    dest: '/etc/bash.bashrc'
+    line: 'export PATH=$PATH:{{ tez_home }}/lib # TEZ-LIB-PATH'
+    regexp: '# TEZ-LIB-PATH'

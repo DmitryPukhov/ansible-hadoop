@@ -1,5 +1,7 @@
 ---
 # Basic settings
+metastore_version: 2.1.0
+
 postgresql_version: 9.5
 postgresql_encoding: 'UTF-8'
 postgresql_locale: 'en_US.UTF-8'
@@ -35,9 +37,6 @@ postgresql_databases:
     encoding: 'UTF-8'   # override global {{ postgresql_encoding }} variable per database
     state: present
 
-postgresql_admin_user: "postgres"
-postgresql_default_auth_method: "trust"
-
 # List of user privileges to be applied (optional)
 postgresql_user_privileges:
   - name: hadoop                   # user name
@@ -48,3 +47,5 @@ postgresql_user_privileges:
 #    db: foobar                  # database
 #    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
 #    role_attr_flags: "CREATEDB" # role attribute flags
+
+

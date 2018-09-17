@@ -1,33 +1,37 @@
 ##########################
 # Hadoop nodes
 [hadoop_namenode]
-hdp1001
+hdp001
 
 [hadoop_resourcemanager]
-hdp1001
+hdp001
 
 [hadoop_workers]
-hdp1002
-hdp1003
+hdp001
+###########################
+# Hive
+[hive_master]
+hdp001
+[hive]
+hdp001
+
 ##########################
 # HBase
 [hbase_master]
-hdp1001
+hdp001
 
 [hbase_regionservers]
-hdp1002
-hdp1003
+hdp001
+hdp001
 
 ##########################
 # Zookeeper
 
 [zookeeper]
-hdp1001 zk_myid=1
-hdp1002 zk_myid=2
-hdp1003 zk_myid=3
+hdp001 zk_myid=1
 
 ##########################
 # Hive
 [tez_master]
-hdp1001
+hdp001
 

@@ -15,5 +15,5 @@
 
 - name: Init metastore
   become_user: hadoop
-  command: "{{ hive_home }}/bin/schematool -initSchema -dbType postgres"
+  command: "{{ hive_home }}/bin/schematool -initSchemaTo {{ metastore_version }} -dbType postgres"
 

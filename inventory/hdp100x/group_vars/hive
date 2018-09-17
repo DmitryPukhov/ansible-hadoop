@@ -1,3 +1,4 @@
 ---
 
 hive_version: 2.3.3
+metastore_version: 2.1.0
