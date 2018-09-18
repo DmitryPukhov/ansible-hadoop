@@ -17,6 +17,11 @@
 - name: install java
   apt: name={{ java_package }} state=present
 
+- name: set hadoop_installed flag
+  stat: path='{ hadoop_home }}-{{ hadoop_version }}.tar.gz'
+  register: hadoop_installed
+
+
 - name: download hadoop
   get_url:
     url: '{{ hadoop_mirrors|random }}'
@@ -27,6 +32,7 @@
   retries: 5
   delay: 2
   sudo: yes
+  when: not hadoop_installed.stat.exists
 
 
 - name: extract hadoop tarball

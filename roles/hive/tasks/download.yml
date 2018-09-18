@@ -1,4 +1,9 @@
 ---
+
+- name: Add a fast check to speed reconfiguration
+  stat: path='{{ hive_home }}-apache-hive-{{ hive_version }}-bin.tar.gz'
+  register: hive_installed
+
 - name: download hive
   get_url:
     url: '{{ hive_mirrors|random }}/apache-hive-{{ hive_version }}-bin.tar.gz'
@@ -9,6 +14,8 @@
   retries: 5
   delay: 2
   sudo: yes
+  when: not hive_installed.stat.exists
+
 
 - name: unpack Hive
   sudo: yes

@@ -1,13 +1,22 @@
 ---
+
+- name: Copy icu4j to avoid Hive start error
+  template:
+    src: "templates/hive/lib/{{ item }}"
+    dest: "{{ hive_home }}/lib/{{ item }}"
+    owner: "{{ hadoop_user }}"
+  with_fileglob:
+    - ./*
+
 - name: Copy configs to hive/conf
   template:
     src: "templates/hive/conf/{{ item }}"
     dest: "{{ hive_home }}/conf/{{ item }}"
     owner: "{{ hadoop_user }}"
   with_items:
-    - hive-site.xml
-    - hive-log4j2.properties
-    - hive-env.sh
+  - hive-site.xml
+  - hive-log4j2.properties
+  - hive-env.sh
 
 - name: add HIVE_HOME to hive/bin in .bashrc
   lineinfile:

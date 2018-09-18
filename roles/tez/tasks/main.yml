@@ -5,3 +5,6 @@
 
 - name: copy tez to hdfs
   include: copy-tez.yml
+
+- name: configure
+  include: configure.yml

@@ -1,29 +1,16 @@
 ---
 
-
-- name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hadoop-{{ hadoop_version }}
-  register: hadoop_installed
-
 - name: Download and copy files to destination
   include: download.yml
-  when: not hadoop_installed.stat.exists
 
-
-- name: Add a fast check to speed reconfiguration
-  stat: path=/opt/hadoop-{{ hadoop_version }}
-  register: hadoop_installed
 
 - name: Open hadoop ports
   include: open-ports.yml
-  when: hadoop_installed.stat.exists
 
 - name: Configuration changes
   include: configure.yml
-  when: hadoop_installed.stat.exists
 
 - name: Autostart set up
   include: autostart.yml
-  when: hadoop_installed.stat.exists
 
 

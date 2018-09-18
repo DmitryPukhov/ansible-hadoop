@@ -11,4 +11,7 @@ hadoop_extra_options: "--config /opt/hadoop/conf"
 hadoop_user: hadoop
 hadoop_group: hadoop
 
+tez_am_resource_memory_mb: 5120
+tez_am_java_opts: -Xmx4096m
+
 
