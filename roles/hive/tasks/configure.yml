@@ -1,12 +1,17 @@
 ---
 
-- name: Copy icu4j to avoid Hive start error
-  template:
-    src: "templates/hive/lib/{{ item }}"
-    dest: "{{ hive_home }}/lib/{{ item }}"
-    owner: "{{ hadoop_user }}"
-  with_fileglob:
-    - ./*
+- name: Copy libs
+  copy:
+    src: "files/hive/lib/"
+    dest: "{{ hive_home }}/lib/"
+
+#- name: Copy additional jars to Hive libs
+#  template:
+#    src: "{{ item }}"
+#    dest: "{{ hive_home }}/lib/{{ item }}"
+#    owner: "{{ hadoop_user }}"
+#  with_fileglob:
+#    - files/hive/lib/*
 
 - name: Copy configs to hive/conf
   template:
