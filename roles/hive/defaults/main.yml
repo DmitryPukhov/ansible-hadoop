@@ -34,6 +34,6 @@ hive_tez_java_opts: -Xmx4096m
 hive_auto_convert_join_noconditionaltask_size: 1342177000
 
 
-tez_am_resource_memory_mb: 5120
+#tez_am_resource_memory_mb: 5120
 tez_am_java_opts: -Xmx4096m
 

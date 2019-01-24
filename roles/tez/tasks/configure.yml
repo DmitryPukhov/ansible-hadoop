@@ -6,6 +6,19 @@
   with_items:
     - tez-site.xml
 
+- name: Copy configs to hadoop/conf
+  template:
+    src: "templates/tez/conf/{{ item }}"
+    dest: "{{ hadoop_home }}/conf/{{ item }}"
+  with_items:
+    - tez-site.xml
+
+- name: Copy configs to hive/conf
+  template:
+    src: "templates/tez/conf/{{ item }}"
+    dest: "{{ hive_home }}/conf/{{ item }}"
+  with_items:
+    - tez-site.xml
 
 - name: set TEZ_CONF_DIR in /etc/bash.bashrc
   lineinfile:

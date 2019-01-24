@@ -20,6 +20,15 @@
         <name>yarn.web-proxy.address</name>
         <value>{{ groups['hadoop_resourcemanager'][0] }}:8100</value>
     </property>
+    <property>
+        <name>yarn.nodemanager.pmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
 
     {% for key, value in yarn_props.iteritems() %}
     <property>

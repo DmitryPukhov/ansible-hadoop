@@ -1,6 +1,6 @@
 ---
 - name: Install tez
-  hosts: tez_master
+  hosts: tez_master | tez
   user: ansible
   sudo: yes
   roles:
