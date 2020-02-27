@@ -1,12 +1,17 @@
 ---
 
-- name: Commenting a line using the regualr expressions in Ansible.
-  sudo: yes
-  replace:
-    name: '/etc/hosts'
-    regexp: '^(127\.0\.\d\.\d\s*\w*)$'
-    replace: '#\1'
-
+#- name: Commenting a line using the regualr expressions in Ansible.
+#  # sudo: yes
+#  replace:
+#    name: '/etc/hosts'
+#    regexp: '^(127\.0\.\d\.\d\s*\w*)$'
+#    replace: '#\1'
+#- name: update host file
+#  lineinfile:
+#    dest: /etc/hosts
+#    regexp: '^(127\.0\.\d\.\d\s*\w*)$'
+#    state: absent
+#  become: yes
 
 - name: set JAVA_HOME in .bashrc
   lineinfile:

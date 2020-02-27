@@ -1,0 +1,16 @@
+---
+# User for hadoop service
+hbase_user: hadoop
+hbase_user_pass: 123qwe!@#
+hbase_group: hadoop
+hbase_user_home: /home/hadoop
+hbase_tmp_dir: "{{ hbase_user_home }}/tmp"
+
+# The type of the node: slave / master / resourcemanager / nodemanager / datanode / namenode
+hbase_type_of_node: slave
+# Hadoop base directory to install the software
+hbase_home: /opt/hbase
+# List of servers to download the hadoop code
+hbase_mirrors: [ "http://apache-mirror.rbc.ru/pub/apache/hbase/", "http://mirror.linux-ia64.org/apache/hbase/" ]
+# Hbase version to install
+hbase_version: 1.1.4

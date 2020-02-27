@@ -12,4 +12,6 @@ java_home: /usr/lib/jvm/java-8-openjdk-amd64
 # HBase
 #hbase_master: hdp1001
 
-ansible_sudo_pass: '123qwe!@#'
+
+ansible_connection: ssh
+ansible_sudo_pass: '1'

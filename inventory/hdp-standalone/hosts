@@ -1,0 +1,36 @@
+##########################
+# Hadoop nodes
+[hadoop_namenode]
+hdp-standalone
+
+[hadoop_resourcemanager]
+hdp-standalone
+
+[hadoop_workers]
+hdp-standalone
+###########################
+# Hive
+[hive_master]
+hdp-standalone
+[hive]
+hdp-standalone
+
+##########################
+# HBase
+[hbase_master]
+hdp-standalone
+
+[hbase_regionservers]
+hdp-standalone
+
+##########################
+# Zookeeper
+
+[zookeeper]
+hdp-standalone zk_myid=1
+
+##########################
+# Hive
+[tez_master]
+hdp-standalone
+

@@ -14,7 +14,7 @@ hadoop_home: /opt/hadoop
 # List of servers to download the hadoop code
 hadoop_version: 2.9.0
 hadoop_archive: hadoop-{{ hadoop_version }}.tar.gz
-hadoop_mirrors: [ "http://mirror.cc.columbia.edu/pub/software/apache/hadoop/core/hadoop-{{ hadoop_version }}/{{ hadoop_archive }}", "http://ftp.osuosl.org/pub/apache/hadoop/core/hadoop-{{ hadoop_version }}/{{ hadoop_archive }}", "http://apache.rediris.es/hadoop/core/hadoop-{{ hadoop_version }}/{{ hadoop_archive }}", "http://www-eu.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/{{ hadoop_archive }}" ]
+hadoop_mirrors: [ "https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/{{ hadoop_archive }}" ]
 # Hadoop version to install
 
 

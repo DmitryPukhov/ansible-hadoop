@@ -7,7 +7,7 @@
   - 8020 # Hadoop 2 hdfs namenode
   - 9820 # Hadoop 3 hdfs namenode
   - 50070 # Hadoop 2 hdfs namenode http ui
-  - 9870 # Hadoop 3 hdfs namenode http ui
+  - 9870 # Hadoop 3 hdfs namenode http uian
   - 50470 # Hadoop 2 hdfs namenode https ui
   - 9871 # Hadoop 3 hdfs namenode https ui
   - 50091 # Hadoop 2 Secondary namenode http
