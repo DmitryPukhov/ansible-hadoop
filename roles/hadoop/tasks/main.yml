@@ -3,7 +3,6 @@
 - name: Download and copy files to destination
   include: download.yml
 
-
 - name: Open hadoop ports
   include: open-ports.yml
 

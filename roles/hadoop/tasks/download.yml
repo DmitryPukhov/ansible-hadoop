@@ -4,18 +4,34 @@
   group: name={{ hadoop_group }}
 
 - name: add hadoop user
-  user: name={{ hadoop_user}} group={{ hadoop_group }} groups=sudo home={{ hadoop_user_home }} shell=/bin/bash
+  user: name={{ hadoop_user}} group={{ hadoop_group }} home={{ hadoop_user_home }} shell=/bin/bash
+
+
+- name: install system updates for centos systems
+  yum: name={{ item }} state=present update_cache=yes
+  when: ansible_distribution == "CentOS"
+  with_items:
+    - wget
+    - tar
+    - gzip
+    - unzip
 
 - name: Apt install {{ item }}
   action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  when: ansible_distribution == "Ubuntu"
   with_items:
   - wget
   - tar
   - gzip
   - unzip
 
-- name: install java
+- name: install java for Ubuntu
   apt: name={{ java_package }} state=present
+  when: ansible_distribution == "Ubuntu"
+
+- name: install java for CentOS
+  yum: name={{ java_package }} state=present
+  when: ansible_distribution == "CentOS"
 
 - name: set hadoop_installed flag
   stat: path='{ hadoop_home }}-{{ hadoop_version }}.tar.gz'
