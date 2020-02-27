@@ -33,7 +33,6 @@
   service:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
     state: started
   with_items:
       - hadoop-namenode
@@ -44,7 +43,6 @@
   service:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
     state: started
   with_items:
       - yarn-resourcemanager

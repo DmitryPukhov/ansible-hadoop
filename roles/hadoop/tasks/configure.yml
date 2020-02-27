@@ -16,21 +16,21 @@
 - name: set JAVA_HOME in .bashrc
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export JAVA_HOME={{ java_home }}'
     regexp: '^(# *)?export JAVA_HOME='
 
 - name: set HADOOP_HOME in .bashrc
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export HADOOP_HOME={{ hadoop_home }}'
     regexp: '^(# *)?export HADOOP_HOME='
 
 - name: set HADOOP_PREFIX in .bashrc
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export HADOOP_PREFIX={{ hadoop_home }}'
     regexp: '^(# *)?export HADOOP_PREFIX='
 
@@ -38,7 +38,7 @@
 - name: set HADOOP_CONF_DIR in .bashrc
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export HADOOP_CONF_DIR={{ hadoop_home }}/conf'
     regexp: '^(# *)?export HADOOP_CONF_DIR='
 
@@ -46,7 +46,7 @@
 - name: add PATH to HADOOP_HOME/bin in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export PATH=$PATH:{{ hadoop_home }}/bin:{{ hadoop_home }}/sbin # HADOOP-BIN-PATH'
     regexp: '# HADOOP-BIN-PATH'
 

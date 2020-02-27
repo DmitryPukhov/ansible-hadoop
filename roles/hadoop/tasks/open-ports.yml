@@ -3,6 +3,7 @@
 - name: Open hadoop ports
   iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
   ignore_errors: no
+  sudo: yes
   with_items:
   - 8020 # Hadoop 2 hdfs namenode
   - 9820 # Hadoop 3 hdfs namenode

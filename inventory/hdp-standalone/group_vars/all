@@ -1,7 +1,7 @@
 ---
 hadoop_master: hdp-standalone
 yarn.resourcemanager.hostname: hdp-standalone
-java_package: openjdk-8-jre-headless
+java_package: java-1.8.0-openjdk
 java_home: /usr/lib/jvm/java-8-openjdk-amd64
 
 # A dictionary with a set of properties to set in the core-site.xml
