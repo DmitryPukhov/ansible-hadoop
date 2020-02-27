@@ -26,7 +26,7 @@
 - name: add HIVE_HOME to hive/bin in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export HIVE_HOME={{ hive_home }}'
     regexp: '^(# *)?export HIVE_HOME'
 
@@ -34,14 +34,14 @@
 - name: add PATH to hive/bin in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export PATH=$PATH:{{ hive_home }}/bin # HIVE-BIN-PATH'
     regexp: '# HIVE-BIN-PATH'
 
 - name: add PATH to hive/lib in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export PATH=$PATH:{{ hive_home }}/lib # HIVE-LIB-PATH'
     regexp: '# HIVE-LIB-PATH'
 

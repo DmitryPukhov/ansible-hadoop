@@ -5,22 +5,21 @@
     enabled: yes
     state: stopped
 
+#- name: Stop postgresql
+#  service:
+#    name: postgresql
+#    enabled: yes
+#    state: restarted
 
-- name: Stop postgresql
-  service:
-    name: postgresql
-    enabled: yes
-    state: restarted
+- name: Remove old metastore db
+  shell: "dropdb --if-exists hive_metastore --username postgres"
+
 
 #- name: Start postgresql
 #  service:
 #    name: postgresql
 #    enabled: yes
 #    state: started
-
-
-- name: Remove old metastore db
-  shell: "dropdb --if-exists hive_metastore --username postgres"
 
 - name: Create new empty metastore db
   shell: "createdb hive_metastore --username postgres"

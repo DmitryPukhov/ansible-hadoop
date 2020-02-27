@@ -4,11 +4,16 @@
   ignore_errors: yes
   with_items:
   - 5432
+#
+#- name: Restart networking service
+#  service: name=network state=restarted
+- name: create hive lib directory
+  file:
+    path: "{{ hive_home }}/lib/"
+    owner: hadoop
+    state: directory
 
-- name: Restart networking service
-  service: name=networking state=restarted
-
-- name: download postgres driver
+- name: download postgres driver to hive lib
   become_user: hadoop
   copy: src="postgresql-9.4.1209.jre7.jar" dest={{ hive_home }}/lib/postgresql-9.4.1209.jre7.jar
 

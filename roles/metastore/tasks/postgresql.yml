@@ -1,12 +1,34 @@
 ---
+#- name: Install PostgreSQL
+#  yum: name={{ item }} update_cache=true state=installed
+#  with_items:
+#    - postgresql
+#    - postgresql-contrib
+#    - libpq-dev
+#    - python-psycopg2
+#  tags: packages
+
 - name: Install PostgreSQL
-  apt: name={{ item }} update_cache=true state=installed
+  yum: name={{ item }} update_cache=true state=present
   with_items:
-    - postgresql
+    - postgresql-server
     - postgresql-contrib
-    - libpq-dev
     - python-psycopg2
   tags: packages
 
-- name: Ensure the PostgreSQL service is running
-  service: name=postgresql state=started enabled=yes
+
+- name: Clean postgres db files
+  file:
+    state: absent
+    path: "/var/lib/pgsql/data/"
+
+- name: Postgresql init db
+  command: postgresql-setup initdb
+
+#- name: Ensure the PostgreSQL service is running
+#  service: name=postgresql state=started enabled=yes
+- name: Ensure that PostreSQL service is running
+  service:
+        name: postgresql
+        enabled: yes
+        state: started
