@@ -4,7 +4,7 @@
   template:
     src: 'templates/etc/systemd/system/hive-metastore.service'
     dest: '/etc/systemd/system/hive-metastore.service'
-    mode: 664
+    mode: 0644
     force: true
 
 - name: Activate metastore service as a daemon
@@ -12,4 +12,3 @@
     name: hive-metastore
     enabled: yes
     state: started
-
