@@ -2,6 +2,9 @@
 
 # Java
 java_home: /usr/lib/jvm/jre
+hadoop_home: /opt/hadoop
+hive_home: /opt/hive
+
 
 ansible_connection: ssh
 ansible_sudo_pass: '1'

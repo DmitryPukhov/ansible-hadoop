@@ -73,16 +73,15 @@
 #  service: name=postgresql state=started enabled=yes
 - name: Ensure that PostreSQL service is running
   systemd:
-        name: postgresql
-        enabled: yes
-        state: started
-        user: postgres
+    name: postgresql
+    enabled: yes
+    state: started
 
 - name: Connect to test database, create hadoop postgres user
   become_user: postgres
   postgresql_user:
-    #db: hive_metastore
+    #db: postgres
     name: hadoop
     password: '1'
-    priv: ALL
+    #priv: ALL
     role_attr_flags: CREATEDB,SUPERUSER

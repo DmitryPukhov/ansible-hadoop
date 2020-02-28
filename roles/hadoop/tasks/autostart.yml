@@ -53,7 +53,7 @@
   service:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
+    state: started
   with_items:
       - hadoop-datanode
       - yarn-nodemanager
