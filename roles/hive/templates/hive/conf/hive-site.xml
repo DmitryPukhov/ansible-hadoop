@@ -496,7 +496,7 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionPassword</name>
-    <value>123qwe!@#</value>
+    <value>{{ hive_user_pass }}</value>
     <description>password to use against metastore database</description>
   </property>
   <property>
@@ -969,12 +969,12 @@ jdbc:derby:;databaseName=metastore_db;create=true
   </property>
   <property>
     <name>javax.jdo.option.ConnectionUserName</name>
-    <value>hadoop</value>
+    <value>{{ hive_user }}</value>
     <description>Username to use against metastore database</description>
   </property>
   <property>
     <name>javax.jdo.option.ConnectionPassword</name>
-    <value>123qwe!@#</value>
+    <value>{{ hive_user_pass }}</value>
     <description>Username to use against metastore database</description>
   </property>
 

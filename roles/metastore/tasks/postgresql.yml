@@ -1,4 +1,22 @@
 ---
+
+- name: Stop PostgreSQL service
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: stopped
+
+#- name: Delete the user 'postgres'
+#  user:
+#    name: postgres
+#    state: absent
+
+- name: Add the user 'postgres'
+  user:
+    name: postgres
+    password: '1'
+    state: present
+
 #- name: Install PostgreSQL
 #  yum: name={{ item }} update_cache=true state=installed
 #  with_items:
@@ -16,19 +34,55 @@
     - python-psycopg2
   tags: packages
 
-
+- name: Open PostgreSQL ports
+  iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port=5432
+  ignore_errors: no
+  sudo: yes
+#
 - name: Clean postgres db files
   file:
     state: absent
     path: "/var/lib/pgsql/data/"
+    force: true
+
+- name: chown to postgres user
+  file:
+    dest: '/var/lib/pgsql'
+    owner: 'postgres'
+    recurse: yes
 
 - name: Postgresql init db
-  command: postgresql-setup initdb
+  command: 'postgresql-setup initdb'
+
+- name: Configure PostgreSQL. Set listen_addresses.
+  lineinfile:
+    path: /var/lib/pgsql/data/postgresql.conf
+    regexp: "^.*listen_addresses =.*"
+    line: "listen_addresses = '*'"
+    state: present
+  sudo: yes
+
+- name: Configure PostgreSQL. Allow remote connections.
+  lineinfile:
+    path: /var/lib/pgsql/data/pg_hba.conf
+    line: "host   all   all   0.0.0.0/0   md5"
+    state: present
+  sudo: yes
 
 #- name: Ensure the PostgreSQL service is running
 #  service: name=postgresql state=started enabled=yes
 - name: Ensure that PostreSQL service is running
-  service:
+  systemd:
         name: postgresql
         enabled: yes
         state: started
+        user: postgres
+
+- name: Connect to test database, create hadoop postgres user
+  become_user: postgres
+  postgresql_user:
+    #db: hive_metastore
+    name: hadoop
+    password: '1'
+    priv: ALL
+    role_attr_flags: CREATEDB,SUPERUSER

@@ -18,12 +18,12 @@ postgresql_cluster_reset: false
 postgresql_listen_addresses: '*'
 
 postgresql_pg_hba_trust_hosts:
- - {{ansible_default_ipv4.address}}/24
+ - {{ ansible_default_ipv4.address }}/24
 
 # Hadoop users to be created
 postgresql_users:
   - name: hadoop
-    pass: 123qwe!@#
+    pass: 1
     encrypted: no       # denotes if the password is already encrypted.
 
 

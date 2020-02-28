@@ -1,7 +1,7 @@
 
 # User for hadoop service
 hadoop_user: hadoop
-hadoop_user_pass: 123qwe!@#
+hadoop_user_pass: 1
 hadoop_group: hadoop
 hadoop_user_home: /home/hadoop
 hadoop_tmp_dir: /home/hadoop/tmp

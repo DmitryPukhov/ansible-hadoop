@@ -27,6 +27,7 @@ hadoop_user: hadoop
 hadoop_group: hadoop
 
 hive_user: hadoop
+hive_user_pass: '1'
 
 
 hive_tez_container_size: 5120 

@@ -11,6 +11,5 @@
   service:
     name: hive-metastore
     enabled: yes
-    state: reloaded
     state: started
 

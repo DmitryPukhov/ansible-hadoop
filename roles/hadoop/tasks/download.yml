@@ -4,7 +4,7 @@
   group: name={{ hadoop_group }}
 
 - name: add hadoop user
-  user: name={{ hadoop_user}} group={{ hadoop_group }} home={{ hadoop_user_home }} shell=/bin/bash
+  user: name={{ hadoop_user}} group={{ hadoop_group }} password={{ hadoop_user_pass }} home={{ hadoop_user_home }} shell=/bin/bash
 
 
 - name: install system updates for centos systems
