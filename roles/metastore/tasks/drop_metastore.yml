@@ -5,10 +5,16 @@
     enabled: yes
     state: stopped
 
+- name: Stop PostgreSQL service
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: restarted
+
 - name: Remove old metastore db
-  shell: "dropdb --if-exists hive_metastore --username postgres"
+  shell: "dropdb --if-exists hive_metastore --username hadoop"
   become: true
-  become_user: postgres
+  become_user: hadoop
 
 
 

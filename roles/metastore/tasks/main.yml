@@ -1,7 +1,7 @@
 ---
 
-#- name: Install postgresql
-#  include: postgresql.yml
+- name: Install postgresql
+  include: postgresql.yml
 
 - name: Drop old metastore
   include: drop_metastore.yml
@@ -9,7 +9,7 @@
 #
 - name: Create new metastore
   include: create_metastore.yml
-#
+##
 - name: Start Hive metastore
   include: autostart.yml
 #

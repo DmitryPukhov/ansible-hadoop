@@ -17,6 +17,12 @@
   become_user: hadoop
   copy: src="postgresql-9.4.1209.jre7.jar" dest={{ hive_home }}/lib/postgresql-9.4.1209.jre7.jar
 
+- name: Ensure that PostreSQL service is running
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: restarted
+
 - name: Create new empty metastore db
   shell: "createdb hive_metastore --username hadoop"
   become_user: hadoop
