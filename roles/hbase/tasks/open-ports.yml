@@ -4,6 +4,11 @@
   iptables: chain=INPUT jump=ACCEPT protocol=tcp destination_port={{item}}
   ignore_errors: no
   with_items:
+
+  - 2181 # Zookeeper
+  - 2888 # Zookeeper
+  - 3888 # Zookeeper
+
   - 16010 # HMaster
   - 16011 # Backup HMaster, offset1
   - 16020 # HMaster

@@ -23,6 +23,10 @@ hdp-standalone
 [hbase_regionservers]
 hdp-standalone
 
+
+[phoenix]
+hdp-standalone
+
 ##########################
 # Zookeeper
 

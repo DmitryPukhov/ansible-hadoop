@@ -2,9 +2,10 @@
 
 - name: Stop hbase services
   when: '"hbase_master" in group_names'
+  ignore_errors: yes
   service:
     name: '{{ item }}'
-    enabled: false
+    enabled: true
     state: stopped
   with_items:
       - hbase-master
@@ -27,7 +28,6 @@
   systemd:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
     state: restarted
   with_items:
       - hbase-master
@@ -37,7 +37,6 @@
   systemd:
     name: '{{ item }}'
     enabled: yes
-    state: reloaded
     state: restarted
   with_items:
       - hbase-regionserver

@@ -5,14 +5,14 @@
 - name: set hbase home in .bashrc
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: "export HBASE_HOME={{ hbase_home }}"
     regexp: '^(# *)?export HBASE_HOME='
 
 - name: add PATH to HBASE_HOME/bin in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/bash.bashrc'
+    dest: '/etc/csh.cshrc'
     line: 'export PATH=$PATH:{{ hbase_home }}/bin # HBASE-BIN-PATH'
     regexp: '# HBASE-BIN-PATH'
 

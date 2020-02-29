@@ -1,13 +1,19 @@
 ---
+
+
+- name: Add a fast check to speed reconfiguration
+  stat: path="{{ hbase_home }}-{{ hbase_version }}.tar.gz"
+  register: hbase_downloaded
+
 # Create hbase user
 - name: add hbase group
   group: name={{ hbase_group }}
 
 - name: add hbase user
-  user: name={{ hbase_user}} group={{ hbase_group }} groups=sudo home={{ hbase_user_home }} shell=/bin/bash
+  user: name={{ hbase_user}} group={{ hbase_group }} groups=wheel home={{ hbase_user_home }} shell=/bin/bash
 
 - name: Apt install wget and archivators
-  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  action: yum pkg={{ item }} state=installed update_cache=yes
   with_items:
   - wget
   - tar
@@ -15,7 +21,7 @@
   - unzip
 
 - name: install java
-  apt: name={{ java_package }} state=present
+  yum: name={{ java_package }} state=present
 
 - name: download hbase
   get_url:
@@ -23,11 +29,11 @@
     dest: '{{ hbase_home }}-{{ hbase_version }}.tar.gz'
     force: no
   register: result
-  until: result|success
+  until: result is success
   retries: 5
   delay: 2
   sudo: yes
-
+  when: not hbase_downloaded.stat.exists
 
 - name: extract hbase tarball
   command: '/usr/bin/env tar xf hbase-{{ hbase_version }}.tar.gz'

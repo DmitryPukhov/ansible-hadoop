@@ -1,15 +1,10 @@
 ---
 
-- name: Add a fast check to speed reconfiguration
-  stat: path="{{ hbase_home }}/hbase-{{ hbase_version }}"
-  register: hbase_installed
+- name: Download and copy files to destination
+  include: download.yml
 
 - name: Open hbase ports
   include: open-ports.yml
-
-- name: Download and copy files to destination
-  include: download.yml
-  when: not hbase_installed.stat.exists
 
 - name: Configuration changes
   include: configure.yml
