@@ -38,3 +38,15 @@ hdp-standalone zk_myid=1
 [tez_master]
 hdp-standalone
 
+##########################
+# Spark
+[spark]
+hdp-standalone
+
+[spark_master]
+hdp-standalone
+
+[spark_workers]
+hdp-standalone
+
+

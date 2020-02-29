@@ -1,13 +1,13 @@
 ---
-# Create hbase user
+
 - name: add spark group
   group: name={{ spark_group }}
 
 - name: add spark user
-  user: name={{ spark_user}} group={{ spark_group }} groups=sudo home={{ spark_user_home }} shell=/bin/bash
+  user: name={{ spark_user}} group={{ spark_group }} groups=wheel home={{ spark_user_home }} shell=/bin/bash
 
 - name: Apt install wget and archivators
-  action: apt pkg={{ item }} state=installed update_cache=yes cache_valid_time=604800
+  action: yum pkg={{ item }} state=installed update_cache=yes
   with_items:
   - wget
   - tar
@@ -15,7 +15,7 @@
   - unzip
 
 - name: install java
-  apt: name={{ java_package }} state=present
+  yum: name={{ java_package }} state=present
 
 - name: download spark
   get_url:

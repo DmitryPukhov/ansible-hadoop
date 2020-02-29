@@ -30,6 +30,7 @@
 - name: Configuration changes
   include: configure.yml
 
-- name: Autostart set up
-  include: autostart.yml
+#  This is only for Spark wo yarn
+#- name: Autostart set up
+#  include: autostart.yml
 

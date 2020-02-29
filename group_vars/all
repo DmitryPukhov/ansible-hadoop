@@ -9,3 +9,5 @@ hdfs_root_dir: '/'
 
 ansible_connection: ssh
 ansible_sudo_pass: '1'
+
+hive_metastore_version: 2.3.0

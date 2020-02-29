@@ -6,6 +6,7 @@
   lineinfile:
     #dest: '{{ hadoop_user_home }}/.bashrc'
     dest: '/etc/bash.bashrc'
+    create: yes
     line: "export SPARK_HOME={{ spark_home }}"
     regexp: '^(# *)?export SPARK_HOME='
 

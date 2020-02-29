@@ -16,3 +16,5 @@ hadoop_version: 2.9.0
 hdfs_props: {}
 # A dictionary with a set of properties to set in the yarn-site.xml
 yarn_props: {}
+
+hive_metastore_version: 2.3.0
