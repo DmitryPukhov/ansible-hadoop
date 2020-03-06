@@ -22,19 +22,19 @@
 
 - name: set TEZ_CONF_DIR in /etc/bash.bashrc
   lineinfile:
-    dest: '/etc/csh.cshrc'
+    dest: '/etc/bashrc'
     line: 'export TEZ_CONF_DIR={{ tez_home }}/conf'
     regexp: '^(# *)?export TEZ_CONF_DIR'
 
 - name: Extend HADOOP_CLASSPATH to tez jars and conf
   lineinfile:
-    dest: '/etc/csh.cshrc'
+    dest: '/etc/bashrc'
     line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:{{ tez_home }}/conf:{{ tez_home }}/lib/*:{{ tez_home }}/lib/* # TEZ_HADOOP_CLASSPATH'
     regexp: '# TEZ_HADOOP_CLASSPATH'
 
 - name: add PATH to tez/lib in .bashrc
   lineinfile:
     #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/csh.cshrc'
+    dest: '/etc/bashrc'
     line: 'export PATH=$PATH:{{ tez_home }}/lib # TEZ-LIB-PATH'
     regexp: '# TEZ-LIB-PATH'

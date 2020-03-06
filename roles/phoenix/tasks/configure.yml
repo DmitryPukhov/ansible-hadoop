@@ -4,7 +4,7 @@
 - name: add phoenix home to PATH in .bashrc
   lineinfile:
 #    dest: '{{ hadoop_user_home }}/.bashrc'
-    dest: '/etc/csh.cshrc'
+    dest: '/etc/bashrc'
     line: 'export PATH=$PATH:{{ phoenix_home }} # PHOENIX-PATH'
     regexp: '# PHOENIX-PATH'
 
